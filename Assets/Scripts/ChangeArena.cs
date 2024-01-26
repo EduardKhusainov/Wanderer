@@ -16,11 +16,11 @@ namespace Wanderer {
 
         private void Start()
         {
-            _arenas = Physics.OverlapSphere(SceneAdministrator.Instance.player.transform.position, 1000, _arenaLayer);
+            _arenas = Physics.OverlapSphere(ArenaBootstrapper.Instance.player.transform.position, 1000, _arenaLayer);
         }
         private void Update()
         {
-            if (SceneAdministrator.Instance.isArenaCleaned)
+            if (ArenaBootstrapper.Instance.isArenaCleaned)
             {
                 StartCoroutine(ArenaUpload());
             }
@@ -28,11 +28,11 @@ namespace Wanderer {
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject == SceneAdministrator.Instance.player && _canUploadNewScene) 
+            if (other.gameObject == ArenaBootstrapper.Instance.player && _canUploadNewScene) 
             {
                 _secondArena.SetActive(true);
                 _firstArena.SetActive(false);
-                SceneAdministrator.Instance.isArenaCleaned = false;
+                ArenaBootstrapper.Instance.isArenaCleaned = false;
             }
         }
 

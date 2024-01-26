@@ -11,7 +11,7 @@ namespace Wanderer {
 
         void Update()
         {
-            if (SceneAdministrator.Instance.isArenaCleaned)
+            if (ArenaBootstrapper.Instance.isArenaCleaned)
             {
 
                 Collider[] magneticItems = Physics.OverlapSphere(transform.position, 1000, _layerMask);
@@ -19,7 +19,7 @@ namespace Wanderer {
 
                 foreach (var coll in magneticItems)
                 {
-                    coll.gameObject.transform.position = Vector3.MoveTowards(coll.gameObject.transform.position, SceneAdministrator.Instance.player.transform.position, _speed * Time.deltaTime);
+                    coll.gameObject.transform.position = Vector3.MoveTowards(coll.gameObject.transform.position, ArenaBootstrapper.Instance.player.transform.position, _speed * Time.deltaTime);
                 }
             }
         }

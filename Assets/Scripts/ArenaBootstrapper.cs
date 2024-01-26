@@ -1,19 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Wanderer.NSUI.Overlay;
+using Wanderer.NSUI.Screen;
 
 namespace Wanderer
 {
-    public class SceneAdministrator : MonoBehaviour
+    public class ArenaBootstrapper : MonoBehaviour
     {
-        public static SceneAdministrator Instance
-        { get; private set; }
-        [SerializeField] bool isMainMenu;
-        [SerializeField] GameObject pauseMenu;
+        public static ArenaBootstrapper Instance { get; private set; }
         public GameObject player;
         public GameObject mainCamera;
-        bool isPaused = false;
         public bool isArenaCleaned = false;
 
         private void Awake()
@@ -31,13 +28,17 @@ namespace Wanderer
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && isPaused == false && !isMainMenu)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Pause();
-            }
-            else if (Input.GetKeyDown(KeyCode.Escape) && isPaused == true && !isMainMenu)
-            {
-                Unpause();
+                var screen = CanvasManager.Instance.SetCanvases
+                    .Select(canvas => canvas.GetComponent<PauseOverlay>())
+                    .FirstOrDefault();
+
+                if (screen.IsActive)
+                    return;
+
+                var fadeDelay = 0.6f;
+                screen.Show(true, fadeDelay);
             }
         }
 
@@ -57,22 +58,6 @@ namespace Wanderer
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             Time.timeScale = 1.0f;
             Debug.Log("This shit restarted!");
-        }
-
-        public void Pause()
-        {
-            Time.timeScale = 0;
-            isPaused = true;
-            pauseMenu.SetActive(true);
-            Cursor.visible = true;
-        }
-
-        public void Unpause()
-        {
-            Time.timeScale = 1.0f;
-            isPaused = false;
-            pauseMenu.SetActive(false);
-            Cursor.visible = false;
         }
 
         public static void Exit()

@@ -18,10 +18,10 @@ namespace Wanderer {
         {
             if (currentTarget)
             {
-                Vector3 lookPos = currentTarget.transform.position - SceneAdministrator.Instance.player.transform.position;
+                Vector3 lookPos = currentTarget.transform.position - ArenaBootstrapper.Instance.player.transform.position;
                 lookPos.y = 0;
                 Quaternion rotation = Quaternion.LookRotation(lookPos);
-                SceneAdministrator.Instance.player.transform.rotation = Quaternion.Lerp(SceneAdministrator.Instance.player.transform.rotation, rotation, 10 * Time.deltaTime);
+                ArenaBootstrapper.Instance.player.transform.rotation = Quaternion.Lerp(ArenaBootstrapper.Instance.player.transform.rotation, rotation, 10 * Time.deltaTime);
             }
         }
 
@@ -51,7 +51,7 @@ namespace Wanderer {
                 currentTarget = null;
                 if (_enemyColliders.Length == 0)
                 {
-                    SceneAdministrator.Instance.isArenaCleaned = true;
+                    ArenaBootstrapper.Instance.isArenaCleaned = true;
                 }
             }
             else
@@ -68,7 +68,7 @@ namespace Wanderer {
                 currentTarget = _enemyColliders[0].gameObject;
                 foreach (var collider in _enemyColliders)
                 {
-                    if (Vector3.Distance(SceneAdministrator.Instance.player.transform.position, collider.gameObject.transform.position) < Vector3.Distance(SceneAdministrator.Instance.player.transform.position, currentTarget.gameObject.transform.position))
+                    if (Vector3.Distance(ArenaBootstrapper.Instance.player.transform.position, collider.gameObject.transform.position) < Vector3.Distance(ArenaBootstrapper.Instance.player.transform.position, currentTarget.gameObject.transform.position))
                     {
                         currentTarget = collider.gameObject;
                     }
@@ -80,7 +80,7 @@ namespace Wanderer {
         void GetTarget()
         {
             _enemyColliders = new Collider[0];
-            _enemyColliders = Physics.OverlapSphere(SceneAdministrator.Instance.player.transform.position,1000, 1 << enemyLayer);
+            _enemyColliders = Physics.OverlapSphere(ArenaBootstrapper.Instance.player.transform.position,1000, 1 << enemyLayer);
 
             if (currentTarget) return;
         }

@@ -8,7 +8,7 @@ public class Flask : MonoBehaviour
     [SerializeField] float _healAmount;
     private void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject == SceneAdministrator.Instance.player)
+        if (coll.gameObject == ArenaBootstrapper.Instance.player)
         {
             coll.GetComponent<IHeal>()?.Heal(_healAmount);
         }

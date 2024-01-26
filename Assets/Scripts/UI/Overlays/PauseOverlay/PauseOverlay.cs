@@ -16,6 +16,8 @@ namespace Wanderer
             [Header("Configurations")]
             [SerializeField] private float _fadeOutTime;
 
+            public bool IsActive { get; private set; } = false;
+
             private void OnDisable()
             {
                 _unpauseButton.onClick.RemoveListener(OnUnpauseButtonClick);
@@ -30,9 +32,18 @@ namespace Wanderer
                 _reloadButton.onClick.AddListener(OnReloadButtonClick);
             }
 
+            public void SetOverlayStatus(bool isVisible) => IsActive = isVisible;
+
             private void OnUnpauseButtonClick()
             {
-                Show(false, _fadeOutTime);
+                base.Show(false, _fadeOutTime);
+                SetOverlayStatus(false);
+            }
+
+            public override void Show(bool isVisible, float animationTime = 0)
+            {
+                base.Show(isVisible, animationTime);
+                SetOverlayStatus(true);
             }
 
             private void OnMenuButtonClick()
