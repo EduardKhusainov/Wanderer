@@ -48,13 +48,13 @@ Material:
     m_Floats:
     - Vector1_2E11270D: 0.13
     - Vector1_39D35881: 1
-    - Vector1_3B48FD24: -0.27
-    - Vector1_5AE4170F: 0.79
+    - Vector1_3B48FD24: -0.39
+    - Vector1_5AE4170F: 0.1
     - Vector1_80CAEB23: 0.22
-    - Vector1_8E5091B8: 0.05
+    - Vector1_8E5091B8: -0.25
     - Vector1_981A3A67: 1
-    - Vector1_C1C7D298: 0.252
-    - Vector1_ECB3F2B8: 0.035
+    - Vector1_C1C7D298: 0.131
+    - Vector1_ECB3F2B8: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
