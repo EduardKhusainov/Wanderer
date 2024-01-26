@@ -7,7 +7,7 @@ namespace Wanderer {
     {
         void Update()
         {
-            gameObject.transform.LookAt(SceneAdministrator.Instance.mainCamera.transform);
+            gameObject.transform.LookAt(ArenaBootstrapper.Instance.mainCamera.transform);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Wanderer {
 
         void Update()
         {
-            if (!SceneAdministrator.Instance.isArenaCleaned)
+            if (!ArenaBootstrapper.Instance.isArenaCleaned)
             {
                 Shoot();
             }

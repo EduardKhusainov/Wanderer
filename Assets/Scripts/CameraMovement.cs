@@ -10,7 +10,7 @@ namespace Wanderer
         public float cameraZOffset;
         private void LateUpdate()
         {
-            Vector3 p = SceneAdministrator.Instance.player.transform.position;
+            Vector3 p = ArenaBootstrapper.Instance.player.transform.position;
             p.z -= cameraZOffset;
             p.x = transform.position.x;
             p.y = transform.position.y;

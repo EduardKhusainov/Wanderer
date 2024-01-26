@@ -18,7 +18,7 @@ namespace Wanderer
                 _canvasGroup = GetComponent<CanvasGroup>();
             }
 
-            public void Show(bool isVisible, float animationTime = 0f)
+            public virtual void Show(bool isVisible, float animationTime = 0f)
             {
                 _canvasGroup.alpha = Convert.ToInt32(!isVisible);
 

@@ -22,6 +22,7 @@ namespace Wanderer
             {
                 _closeButton.onClick.AddListener(OnCloseButtonClick);
                 _muteButton.onClick.AddListener(OnMuteButtonClick);
+                _canvasGroup.blocksRaycasts = false;
             }
 
             private void OnCloseButtonClick() => Show(false);

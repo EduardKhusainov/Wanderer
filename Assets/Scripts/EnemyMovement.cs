@@ -15,9 +15,9 @@ namespace Wanderer
 
         private void Update()
         {
-            if(SceneAdministrator.Instance.player != null)
+            if(ArenaBootstrapper.Instance.player != null)
             {
-                agent.SetDestination(SceneAdministrator.Instance.player.transform.position);
+                agent.SetDestination(ArenaBootstrapper.Instance.player.transform.position);
             }
         }
     }

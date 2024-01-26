@@ -26,6 +26,7 @@ namespace Wanderer
                     yield return null;
                 }
 
+                GameManager.Instance.SetCursorState(CursorLockMode.None);
                 SceneManager.LoadScene(_sceneId);
             }
         }

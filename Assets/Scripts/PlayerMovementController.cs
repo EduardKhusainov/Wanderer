@@ -47,14 +47,14 @@ namespace Wanderer
         {
             if (other.name == "UpperCameraBorder" || other.name == "DownCameraBorder")
             {
-                SceneAdministrator.Instance.mainCamera.GetComponent<CameraMovement>().enabled = false;
+                ArenaBootstrapper.Instance.mainCamera.GetComponent<CameraMovement>().enabled = false;
             }
         }
         private void OnTriggerExit(Collider other)
         {
             if (other.name == "UpperCameraBorder" || other.name == "DownCameraBorder")
             {
-                SceneAdministrator.Instance.mainCamera.GetComponent<CameraMovement>().enabled = true;
+                ArenaBootstrapper.Instance.mainCamera.GetComponent<CameraMovement>().enabled = true;
             }
         }
     }

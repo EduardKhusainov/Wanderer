@@ -14,11 +14,6 @@ namespace Wanderer
             [SerializeField] private Button _settingsButton;
             [SerializeField] private SettingsScreen _settingsScreen;
 
-            private void OnEnable()
-            {
-                GameManager.Instance.SetCursorState(CursorLockMode.Confined);
-            }
-
             private void OnDisable()
             {
                 _playButton.onClick.RemoveListener(OnPlayButtonClick);
