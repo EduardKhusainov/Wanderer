@@ -7,14 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_ToonSImple
-  m_Shader: {fileID: -6465566751694194690, guid: 550313f87aceb8c46b0b0cb873218c7a,
+  m_Name: Shader Graphs_StylizedWaterInteractive
+  m_Shader: {fileID: -6465566751694194690, guid: 939b7dcff6c218c4880b0609eb3e2f84,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -24,8 +24,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: c96a82c4385e3df4e9472fef92245829, type: 3}
+    - Texture2D_37AAFE25:
+        m_Texture: {fileID: 2800000, guid: b948dd3ce8df64c44b554bcad89be472, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B66AF0E1:
+        m_Texture: {fileID: 2800000, guid: 1be5c08b68cd20b489b60b5d016e8438, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -42,19 +46,23 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DecalMeshBiasType: 0
-    - _DecalMeshDepthBias: 0
-    - _DecalMeshViewBias: 0
-    - _DrawOrder: 0
-    - _Max: 1
-    - _Min: 0.45
+    - Vector1_2E11270D: 0.13
+    - Vector1_39D35881: 1
+    - Vector1_3B48FD24: -0.27
+    - Vector1_5AE4170F: 0.79
+    - Vector1_80CAEB23: 0.22
+    - Vector1_8E5091B8: 0.05
+    - Vector1_981A3A67: 1
+    - Vector1_C1C7D298: 0.252
+    - Vector1_ECB3F2B8: 0.035
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Shades: 0.49
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - Color_27D4D743: {r: 0.27358484, g: 0.8226658, b: 1, a: 0}
+    - Color_51A4B6EC: {r: 0, g: 0.7135715, b: 1, a: 0}
+    - Color_C347D0B: {r: 0.4549662, g: 0.6634097, b: 0.6792453, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &2236891158465156499
+--- !u!114 &4212090364545816632
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

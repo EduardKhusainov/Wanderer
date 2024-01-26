@@ -172,17 +172,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2b9ac757bd1f7a141a868bf37661a83b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.128389
+      value: 14.173583
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b9ac757bd1f7a141a868bf37661a83b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: -16.14193
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b9ac757bd1f7a141a868bf37661a83b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.24
+      value: -7.5299697
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b9ac757bd1f7a141a868bf37661a83b,
         type: 3}
@@ -192,17 +192,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2b9ac757bd1f7a141a868bf37661a83b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b9ac757bd1f7a141a868bf37661a83b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b9ac757bd1f7a141a868bf37661a83b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b9ac757bd1f7a141a868bf37661a83b,
         type: 3}
@@ -228,11 +228,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d8acd19c1d4b3944b08f8b5af26ddb6, type: 2}
+      objectReference: {fileID: 2100000, guid: 3a23aa0c45c398043a3afd5c65f84029, type: 2}
     - target: {fileID: 919132149155446097, guid: 2b9ac757bd1f7a141a868bf37661a83b,
         type: 3}
       propertyPath: m_Name
       value: Medusa
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b9ac757bd1f7a141a868bf37661a83b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b9ac757bd1f7a141a868bf37661a83b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -288,7 +298,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 8.427617
-  m_BaseOffset: 4.2138085
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &6447610042048598155
