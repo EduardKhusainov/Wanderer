@@ -8,8 +8,10 @@ namespace Wanderer
     public class EnemyMovement : MonoBehaviour
     {
         NavMeshAgent agent;
+        EnemyHealth enemyHealth;
         void Start()
         {
+            enemyHealth = GetComponent<EnemyHealth>();
             agent = GetComponent<NavMeshAgent>();
         }
 
@@ -17,7 +19,10 @@ namespace Wanderer
         {
             if(ArenaBootstrapper.Instance.player != null)
             {
-                agent.SetDestination(ArenaBootstrapper.Instance.player.transform.position);
+                if(enemyHealth._enemyCurrentHealth > 0)
+                {
+                    agent.SetDestination(ArenaBootstrapper.Instance.player.transform.position);
+                }
             }
         }
     }

@@ -10,7 +10,7 @@ namespace Wandere {
         private void OnTriggerEnter(Collider other)
         {
             other.GetComponent<IDamagable>()?.TakeDamage(_damage);
-            Destroy(gameObject);
+            Destroy(gameObject, 0.2f);
         }
 
         private void OnCollisionEnter(Collision collision) 

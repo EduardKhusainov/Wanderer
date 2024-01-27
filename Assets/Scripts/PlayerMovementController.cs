@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Wanderer
@@ -10,7 +11,11 @@ namespace Wanderer
         private CharacterController _characterController;
         [SerializeField] float _speed;
         public bool isMoving { get; private set; } 
-
+        public Animator animator;
+        public AnimatorController animWalk;
+        public AnimatorController animIdle;
+        public AnimatorController animAttack;
+        public float rotationSpeed;
         private Vector3 movementVector
         {
             get
@@ -23,7 +28,7 @@ namespace Wanderer
         }
         private void Start()
         {
-            _characterController = GetComponent<CharacterController>();
+            _characterController = GetComponentInChildren<CharacterController>();
         }
         void Update()
         {
@@ -31,16 +36,25 @@ namespace Wanderer
             {
                 MoveLogic();
                 isMoving = true;
+                animator.runtimeAnimatorController = animWalk;
             }
             else
             {
                 isMoving = false;
+                animator.runtimeAnimatorController = animIdle;
             }
         }
 
         private void MoveLogic()
         {
             _characterController.Move(movementVector * Time.deltaTime * _speed);
+
+            if(movementVector != Vector3.zero)
+            {
+                Quaternion toRotation = Quaternion.LookRotation(movementVector, Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); 
+            }           
+            
         }
 
         private void OnTriggerEnter(Collider other)

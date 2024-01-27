@@ -8,10 +8,13 @@ namespace Wanderer
 {
     public class EnemyHealth : MonoBehaviour, IDamagable
     {
-        private float _enemyCurrentHealth;
+        public float _enemyCurrentHealth;
         [SerializeField] float _enemyMaxHealth;
         [SerializeField] Slider _hpSlider;
         [SerializeField] GameObject coin;
+        private EnemyAnimator enemyAnimator;
+        public ParticleSystem psEnemeDeath;
+        public SkinnedMeshRenderer skinnedMeshRenderer;
 
         private void Start()
         {
@@ -27,8 +30,21 @@ namespace Wanderer
 
         void Death()
         {
-            Destroy(gameObject);
+            //enemyAnimator.animator.runtimeAnimatorController = enemyAnimator.animDeath;
+            Destroy(gameObject, 1f);
             Instantiate(coin, transform.position, coin.transform.rotation);
+            StartCoroutine(SpawnPSBubble());
+        }
+
+        IEnumerator SpawnPSBubble()
+        {
+           yield return new WaitForSeconds(0.95f);
+           var ps =  Instantiate(psEnemeDeath, transform.position, transform.rotation);
+           var sh = ps.shape;
+           sh.shapeType = ParticleSystemShapeType.SkinnedMeshRenderer;
+           sh.skinnedMeshRenderer = skinnedMeshRenderer;
+           Debug.Log("Spawned");
         }
     }
+
 }

@@ -12,11 +12,15 @@ namespace Wanderer {
 
         public GameObject currentTarget { get; private set; }
         private Collider[] _enemyColliders = new Collider[0];
-
-
+        private PlayerController _playerController;
+        int currentIndex = 0;
+        private void Start() 
+        {
+            _playerController = GetComponent<PlayerController>();    
+        }
         void PlayerRotate()
         {
-            if (currentTarget)
+            if (currentTarget && !_playerController.isMoving)
             {
                 Vector3 lookPos = currentTarget.transform.position - ArenaBootstrapper.Instance.player.transform.position;
                 lookPos.y = 0;
@@ -59,6 +63,7 @@ namespace Wanderer {
                 currentTarget = null;
             }
             PlayerRotate();
+            
         }
 
         void NearTarget()

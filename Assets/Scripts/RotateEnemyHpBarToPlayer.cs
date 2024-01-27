@@ -7,7 +7,7 @@ namespace Wanderer {
     {
         void Update()
         {
-            gameObject.transform.LookAt(ArenaBootstrapper.Instance.mainCamera.transform);
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }
