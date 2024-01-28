@@ -14,9 +14,11 @@ namespace Wanderer {
         private Collider[] _enemyColliders = new Collider[0];
         private PlayerController _playerController;
         int currentIndex = 0;
+        private ChangeArena changeArena;
         private void Start() 
         {
             _playerController = GetComponent<PlayerController>();    
+             changeArena = FindObjectOfType<ChangeArena>();
         }
         void PlayerRotate()
         {
@@ -41,7 +43,7 @@ namespace Wanderer {
             }
         }
 
-        void FixedUpdate()
+        void Update()
         {
             GetTarget();
 
@@ -56,6 +58,7 @@ namespace Wanderer {
                 if (_enemyColliders.Length == 0)
                 {
                     ArenaBootstrapper.Instance.isArenaCleaned = true;
+
                 }
             }
             else

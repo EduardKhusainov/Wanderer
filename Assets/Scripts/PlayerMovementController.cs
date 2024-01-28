@@ -8,7 +8,7 @@ namespace Wanderer
 {
     public class PlayerController : MonoBehaviour
     {
-        private CharacterController _characterController;
+        public CharacterController _characterController;
         [SerializeField] float _speed;
         public bool isMoving { get; private set; } 
         public Animator animator;
@@ -16,6 +16,7 @@ namespace Wanderer
         public AnimatorController animIdle;
         public AnimatorController animAttack;
         public float rotationSpeed;
+        public bool isTeleported;
         private Vector3 movementVector
         {
             get
@@ -34,9 +35,12 @@ namespace Wanderer
         {
             if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S)) 
             {
+                if(!isTeleported)
+                {
                 MoveLogic();
                 isMoving = true;
                 animator.runtimeAnimatorController = animWalk;
+                }
             }
             else
             {

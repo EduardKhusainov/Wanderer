@@ -11,8 +11,7 @@ namespace Wanderer {
         private Collider[] _arenas;
         private int arenaNum = 0;
         [SerializeField] LayerMask _arenaLayer;
-        [SerializeField] GameObject _firstArena;
-        [SerializeField] GameObject _secondArena;
+        [SerializeField] GameObject[] maps;
 
         private void Start()
         {
@@ -20,8 +19,9 @@ namespace Wanderer {
         }
         private void Update()
         {
-            if (ArenaBootstrapper.Instance.isArenaCleaned)
+            if(ArenaBootstrapper.Instance.isArenaCleaned)
             {
+                ArenaBootstrapper.Instance.isArenaCleaned = false;
                 StartCoroutine(ArenaUpload());
             }
         }
@@ -30,15 +30,13 @@ namespace Wanderer {
         {
             if (other.gameObject == ArenaBootstrapper.Instance.player && _canUploadNewScene) 
             {
-                _secondArena.SetActive(true);
-                _firstArena.SetActive(false);
                 ArenaBootstrapper.Instance.isArenaCleaned = false;
             }
         }
 
         IEnumerator ArenaUpload()
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(5f);
             _canUploadNewScene = true; 
         }
     }
