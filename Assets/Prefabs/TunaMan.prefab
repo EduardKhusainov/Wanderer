@@ -5167,7 +5167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyCurrentHealth: 0
-  _enemyMaxHealth: 100
+  _enemyMaxHealth: 120
   _hpSlider: {fileID: 0}
   coin: {fileID: 3965039573719096673, guid: b3e3199bca7fb264abc7f7147c60bae7, type: 3}
   psEnemeDeath: {fileID: 4129174630785153158, guid: fd1e12a2889ec2a4aab355f405c64bcc,
@@ -5222,6 +5222,7 @@ MonoBehaviour:
   go: {fileID: 0}
   fresnel: 0
   attackSpeed: 1.75
+  damage: 25
   arsPart: {fileID: 0}
 --- !u!4 &1865502356417919750 stripped
 Transform:

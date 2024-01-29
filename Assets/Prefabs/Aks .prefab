@@ -5233,7 +5233,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3
+  m_StoppingDistance: 1.7
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -5263,7 +5263,7 @@ CapsuleCollider:
   m_Radius: 1.54
   m_Height: 6.9
   m_Direction: 1
-  m_Center: {x: 0, y: 1.48, z: 0.06}
+  m_Center: {x: 0, y: 1.48, z: 1.07}
 --- !u!114 &947901206471583640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5277,7 +5277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyCurrentHealth: 0
-  _enemyMaxHealth: 100
+  _enemyMaxHealth: 80
   _hpSlider: {fileID: 0}
   coin: {fileID: 3965039573719096673, guid: b3e3199bca7fb264abc7f7147c60bae7, type: 3}
   psEnemeDeath: {fileID: 4129174630785153158, guid: fd1e12a2889ec2a4aab355f405c64bcc,
@@ -5332,4 +5332,5 @@ MonoBehaviour:
   go: {fileID: 0}
   fresnel: 0
   attackSpeed: 1.75
+  damage: 15
   arsPart: {fileID: 7863718290307160221}

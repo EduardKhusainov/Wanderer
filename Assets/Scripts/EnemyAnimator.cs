@@ -18,6 +18,7 @@ public class EnemyAnimator : MonoBehaviour
     bool isClaped;
     public float fresnel;
     public float attackSpeed;
+    public float damage;
     [SerializeField] ParticleSystem arsPart;
    private void Start() 
    {
@@ -71,7 +72,7 @@ public class EnemyAnimator : MonoBehaviour
         yield return new WaitForSeconds(attackSpeed);
         animator.runtimeAnimatorController = animIdle;
         animator.runtimeAnimatorController = animAttack;
-        other.gameObject.GetComponent<IDamagable>().TakeDamage(10);
+        other.gameObject.GetComponent<IDamagable>().TakeDamage(damage);
         isClaped = true;
         fresnel = 2f;
         if(arsPart != null)
