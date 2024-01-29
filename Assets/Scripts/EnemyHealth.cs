@@ -36,6 +36,7 @@ namespace Wanderer
             if(_enemyCurrentHealth < 0)
             {
                 _enemyCurrentHealth = 0;
+                Death();
             }
         }
 
