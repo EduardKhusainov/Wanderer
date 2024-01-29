@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: de6bed59881cfb54ea3094c2c8873158
   - enabled: 1
-    path: Assets/Scenes/Arena.unity
-    guid: dbcec52e00d51ac449a9b1e664c2f433
+    path: Assets/Scenes/SampleScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}

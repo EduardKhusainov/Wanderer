@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using Wanderer.NSUI.Overlay;
+using Wanderer.NSUI.Screen;
 
-namespace Wanderer {
-public class LoadNext : MonoBehaviour
+namespace Wanderer
 {
    [SerializeField] GameObject[] maps;
    [SerializeField] PlayerController playerController;
@@ -21,6 +21,7 @@ public class LoadNext : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            ShowLevelChanger();
             maps[currentIndex].SetActive(false);
             currentIndex++;
             maps[currentIndex].SetActive(true);
@@ -31,5 +32,15 @@ public class LoadNext : MonoBehaviour
         } 
     }
 
+    private async void ShowLevelChanger()
+        {
+            var canvas = CanvasManager.Instance.SetCanvases[2].GetComponent<LevelChangeOverlay>();
+            var fadeDelay = 1f;
+
+            canvas.Show(true, fadeDelay);
+
+            await canvas.PlayAnimationAsync();
+            canvas.Show(false, fadeDelay);
+        }
     }
 }
