@@ -7,9 +7,15 @@ public class BuffScreen : MonoBehaviour
 {
     [SerializeField] Canvas buffScreen;
     private bool isBuffed;
+    Magnet magnet;
+
+    private void Start() 
+    {
+        magnet = FindObjectOfType<Magnet>();    
+    }
     void Update()
     {
-        if (ArenaBootstrapper.Instance.isArenaCleaned && !isBuffed)
+        if(magnet.isArenaCleaned && !isBuffed)
         {
             BuffScreenOn();
         }       
