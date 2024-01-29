@@ -34,10 +34,10 @@ namespace Wanderer {
 
         void OnGUI()
         {
-            if (currentTarget)
+            if(currentTarget)
             {
                 Vector2 tmp = new Vector2(Camera.main.WorldToScreenPoint(currentTarget.transform.position).x,
-                                          Screen.height - Camera.main.WorldToScreenPoint(currentTarget.transform.position).y);
+                                          Screen.height - Camera.main.WorldToScreenPoint(currentTarget.transform.position + new Vector3(0, 2, 0)).y);
 
                 Vector2 offset = new Vector2(-aimSize / 2, -aimSize / 2);
                 GUI.DrawTexture(new Rect(tmp.x + offset.x, tmp.y + offset.y, aimSize, aimSize), aim);

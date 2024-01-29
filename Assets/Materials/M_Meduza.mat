@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1be5c08b68cd20b489b60b5d016e8438, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -47,18 +47,18 @@ Material:
     m_Ints: []
     m_Floats:
     - _DisstAmmount: 0.28
-    - _DisstPower: 1.09
-    - _DistSpeed_1: 2
-    - _Distortion: 0
-    - _FresPower: 1.08
-    - _Noise: 1.29
+    - _DisstPower: 0
+    - _DistSpeed_1: 0.66
+    - _Distortion: 0.395
+    - _FresPower: -0.96
+    - _Noise: -1.34
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smooth: 0.31
     m_Colors:
     - _Color: {r: 0.15312389, g: 0.8773585, b: 0.31875595, a: 1}
-    - _DistSpeed: {r: -0.1, g: 0.1, b: 0, a: 0}
-    - _FresnelColor: {r: 0.51272446, g: 1.8423319, b: 0.67892534, a: 0}
+    - _DistSpeed: {r: 1.97, g: 0.1, b: 0, a: 0}
+    - _FresnelColor: {r: 14.721718, g: 7.7427907, b: 0.76386285, a: 0}
     - _Vector3: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8812490733067547109
