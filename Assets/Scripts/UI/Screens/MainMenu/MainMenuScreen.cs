@@ -1,6 +1,8 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Wanderer.NSUI.Overlay;
 using Wanderer.NSUI.Screen;
 
 namespace Wanderer

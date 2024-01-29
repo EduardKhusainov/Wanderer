@@ -8,7 +8,8 @@ namespace Wanderer
     {
         public class CanvasManager : PersistentSingleton<CanvasManager>
         {
-            [field: SerializeField] public Canvas[] SetCanvases { get; private set; }
+            [SerializeField] private Canvas[] _setCanvases;
+            public Canvas[] SetCanvases { get => _setCanvases; set => _setCanvases = value; }
 
             [Button]
             private void FillCanvases()
