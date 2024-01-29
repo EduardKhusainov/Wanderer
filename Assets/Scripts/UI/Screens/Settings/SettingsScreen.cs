@@ -38,11 +38,10 @@ namespace Wanderer
 
             private void OnCloseButtonClick() => Show(false);
 
-            private void OnMuteButtonClick()
+            public void OnMuteButtonClick()
             {
                 _audioSettings.ToggleMute();
                 _audioSystem.Refresh();
-
                 SetMuteButtonView();
             }
 
@@ -56,6 +55,7 @@ namespace Wanderer
 
             private void SetMuteButtonView() =>
                 _muteIcon.gameObject.SetActive(NSAudio.AudioSettings.Instance.IsMuted);
+
         }
     }
 }

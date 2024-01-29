@@ -378,6 +378,7 @@ MonoBehaviour:
   go: {fileID: 1681320410596650172}
   fresnel: 0
   attackSpeed: 1.5
+  damage: 40
   arsPart: {fileID: 0}
 --- !u!114 &803305111120474577
 MonoBehaviour:

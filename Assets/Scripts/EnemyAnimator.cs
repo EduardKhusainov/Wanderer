@@ -1,16 +1,18 @@
 using System.Collections;
-using UnityEditor.Animations;
-using UnityEngine;
 using UnityEngine.AI;
-using Wanderer;
+using UnityEngine;
+
+namespace Wanderer
+{
+    
 
 public class EnemyAnimator : MonoBehaviour
 {
    public Animator animator;
-   public AnimatorController animIdle;
-   public AnimatorController animWalk;
-   public AnimatorController animAttack;
-   public AnimatorController animDeath;
+   public RuntimeAnimatorController animIdle;
+   public RuntimeAnimatorController animWalk;
+   public RuntimeAnimatorController animAttack;
+   public RuntimeAnimatorController animDeath;
    public EnemyHealth enemyHealth;
    private IEnumerator coroutine;
     [SerializeField] Material hpBarMaterial;
@@ -18,6 +20,7 @@ public class EnemyAnimator : MonoBehaviour
     bool isClaped;
     public float fresnel;
     public float attackSpeed;
+    public float damage;
     [SerializeField] ParticleSystem arsPart;
    private void Start() 
    {
@@ -71,7 +74,7 @@ public class EnemyAnimator : MonoBehaviour
         yield return new WaitForSeconds(attackSpeed);
         animator.runtimeAnimatorController = animIdle;
         animator.runtimeAnimatorController = animAttack;
-        other.gameObject.GetComponent<IDamagable>().TakeDamage(10);
+        other.gameObject.GetComponent<IDamagable>().TakeDamage(damage);
         isClaped = true;
         fresnel = 2f;
         if(arsPart != null)
@@ -87,4 +90,5 @@ public class EnemyAnimator : MonoBehaviour
         transform.LookAt(other.transform.position, Vector3.up);
         StartCoroutine(Attack(other));
     }
+}
 }

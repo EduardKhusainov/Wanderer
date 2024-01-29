@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
+  isHit: 0
 --- !u!54 &580037622205593231
 Rigidbody:
   m_ObjectHideFlags: 0

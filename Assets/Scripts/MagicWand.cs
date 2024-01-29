@@ -59,10 +59,13 @@ namespace Wanderer {
 
         private void PlayShotEffect()
         {
-            var audio = AudioSystem.Instance;
-            var sound = audio.FindClip(CommonSounds.PlayerAttack);
+            if(AudioSystem.Instance != null)
+            {
+                var audio = AudioSystem.Instance;
+                var sound = audio.FindClip(CommonSounds.PlayerAttack);
 
-            audio.PlayEffectSound(sound);
+                audio.PlayEffectSound(sound);
+            }
         }
 
         IEnumerator Reload(float reloadTime)

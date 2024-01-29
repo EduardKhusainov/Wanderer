@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 8507540162106529910}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.73, z: 1.67}
+  m_LocalPosition: {x: 0, y: 1.96, z: 1.67}
   m_LocalScale: {x: 3.7399998, y: 3.7399998, z: 3.7399998}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -454,6 +454,7 @@ MonoBehaviour:
   go: {fileID: 8507540162106529910}
   fresnel: 0
   attackSpeed: 1.5
+  damage: 10
   arsPart: {fileID: 0}
 --- !u!114 &9203555601539433320
 MonoBehaviour:
@@ -477,7 +478,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

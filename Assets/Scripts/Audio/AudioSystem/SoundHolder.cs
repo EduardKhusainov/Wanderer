@@ -13,7 +13,10 @@ namespace Wanderer
 
             private void Awake()
             {
-                _audioSystem = AudioSystem.Instance;
+                 if(AudioSystem.Instance != null)
+                 {
+                    _audioSystem = AudioSystem.Instance;
+                 }
             }
 
             private void Start()
@@ -26,8 +29,10 @@ namespace Wanderer
                     _audioSystem.StopAllMusic(true);
                     return;
                 }
-
-                _audioSystem.ChangeMusicList(_audioClips);
+                 if(AudioSystem.Instance != null)
+                 {  
+                    _audioSystem.ChangeMusicList(_audioClips);
+                 }
             }
         }
     }
