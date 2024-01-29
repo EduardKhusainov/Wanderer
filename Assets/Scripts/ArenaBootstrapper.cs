@@ -9,8 +9,8 @@ namespace Wanderer
     public class ArenaBootstrapper : MonoBehaviour
     {
         public static ArenaBootstrapper Instance { get; private set; }
-        public GameObject player;
-        public GameObject mainCamera;
+        public PlayerController player;
+        public Camera mainCamera;
         public bool isArenaCleaned = false;
 
         private void Awake()
@@ -26,11 +26,17 @@ namespace Wanderer
             }
         }
 
+        private void Start() 
+        {
+            mainCamera = Camera.main;
+            player = FindObjectOfType<PlayerController>();
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                var screen = CanvasManager.Instance.SetCanvases
+                    var screen = CanvasManager.Instance.SetCanvases
                     .Select(canvas => canvas.GetComponent<PauseOverlay>())
                     .FirstOrDefault();
 
@@ -40,6 +46,9 @@ namespace Wanderer
                 var fadeDelay = 0.6f;
                 screen.Show(true, fadeDelay);
             }
+
+             mainCamera = Camera.main;
+            player = FindObjectOfType<PlayerController>();
         }
 
         public void LoadGameScene(string sceneName)

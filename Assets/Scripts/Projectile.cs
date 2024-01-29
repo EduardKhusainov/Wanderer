@@ -26,19 +26,19 @@ namespace Wandere {
                 hit.collider.GetComponent<IDamagable>()?.TakeDamage(_damage);
                 Destroy(gameObject);
             }
-            if (Physics.SphereCast(transform.position, 0.5f, Vector3.left, out hit, 0.5f, 1<<8) && !isHit)
+            if (Physics.SphereCast(transform.position, 0.5f, Vector3.left, out hit, 0.1f, 1<<8) && !isHit)
             {
                 isHit = true;
                 hit.collider.GetComponent<IDamagable>()?.TakeDamage(_damage);
                 Destroy(gameObject);
             }
-            if (Physics.SphereCast(transform.position, 0.5f, Vector3.right, out hit, 0.5f, 1<<8) && !isHit)
+            if (Physics.SphereCast(transform.position, 0.5f, Vector3.right, out hit, 0.1f, 1<<8) && !isHit)
             {
                 isHit = true;
                 hit.collider.GetComponent<IDamagable>()?.TakeDamage(_damage);
                 Destroy(gameObject);
             }
-            if(Physics.SphereCast(transform.position, 0.5f, Vector3.down, out hit, 0.5f, 1<<8) && !isHit)
+            if(Physics.SphereCast(transform.position, 0.5f, Vector3.down, out hit, 0.1f, 1<<8) && !isHit)
             {
                 isHit = true;
                 hit.collider.GetComponent<IDamagable>()?.TakeDamage(_damage);
