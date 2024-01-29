@@ -10,19 +10,28 @@ namespace Wanderer
         public class LevelChangeOverlay : BaseOverlay
         {
             [SerializeField] private Image _playerIcon;
+            [SerializeField] private Transform _backgroundTransform;
             [SerializeField] private Transform[] _levels;
 
             private int _levelIndex = 0;
 
             public async Task PlayAnimationAsync()
             {
-                var animationTime = 1.5f;
+                if (_levels[_levelIndex] == null)
+                    return;
 
-                await Task.Delay(1000); 
-                _playerIcon.transform.DOMove(_levels[_levelIndex + 1].position, animationTime).SetEase(Ease.Linear);
+                var animationTime = 1f;
+                var delayTimeMillis = 1200;
+
+                await Task.Delay(delayTimeMillis);
+
+                var distanceToMove = 394f;
+
+                _backgroundTransform.DOMoveY(_backgroundTransform.position.y + distanceToMove, animationTime)
+                    .SetEase(Ease.Linear);
                 _levelIndex++;
 
-                await Task.Delay(1000);
+                await Task.Delay(delayTimeMillis);
             }
         }
     }

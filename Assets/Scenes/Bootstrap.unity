@@ -604,6 +604,7 @@ MonoBehaviour:
   _canvas: {fileID: 223472275}
   _canvasGroup: {fileID: 223472272}
   _playerIcon: {fileID: 311911429}
+  _backgroundTransform: {fileID: 1592287317}
   _levels:
   - {fileID: 1026310706}
   - {fileID: 425498409}
@@ -976,7 +977,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1592287317}
+  m_Father: {fileID: 1456987880}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -2379,7 +2380,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 1015
+    m_Bits: 4294967295
 --- !u!114 &963407198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3442,6 +3443,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1592287317}
+  - {fileID: 311911428}
   m_Father: {fileID: 1872749570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -3677,7 +3679,6 @@ RectTransform:
   m_Children:
   - {fileID: 251295457}
   - {fileID: 621246042}
-  - {fileID: 311911428}
   m_Father: {fileID: 1456987880}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
