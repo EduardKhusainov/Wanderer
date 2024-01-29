@@ -8,10 +8,10 @@ namespace Wanderer {
         [SerializeField] float _speed;
         [SerializeField] LayerMask _layerMask;
 
-
+        public bool isArenaCleaned;
         void Update()
         {
-            if (ArenaBootstrapper.Instance.isArenaCleaned)
+            if(isArenaCleaned)
             {
 
                 Collider[] magneticItems = Physics.OverlapSphere(transform.position, 1000, _layerMask);

@@ -13,7 +13,7 @@ namespace Wanderer {
         private CharacterController _characterController;
         private bool _isShooted;
         private PlayerController _playerController;
-        
+        public Vector3 targetOffset;
         void Start()
         {
             _targetSystem = GetComponent<TargetSystem>();
@@ -48,7 +48,7 @@ namespace Wanderer {
             {
                 GameObject fireball = Instantiate(_spell, _spawnPoint.transform.position, Quaternion.identity);
                 Rigidbody fireballRb = fireball.GetComponent<Rigidbody>();
-                fireballRb.AddForce((_targetSystem.currentTarget.transform.position - _spawnPoint.transform.position) * 3, ForceMode.Impulse);
+                fireballRb.AddForce(((_targetSystem.currentTarget.transform.position + targetOffset) - _spawnPoint.transform.position) * 3, ForceMode.Impulse);
                 _playerController.animator.runtimeAnimatorController = _playerController.animIdle;
                 _playerController.animator.runtimeAnimatorController = _playerController.animAttack;
             }
