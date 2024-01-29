@@ -6,13 +6,20 @@ using Wanderer;
 namespace Wandere {
     public class Projectile : MonoBehaviour
     {
-        [SerializeField] float _damage;
+        private float _damage;
+        
         public bool isHit;
+
+        private void Awake()
+        {
+            _damage = ArenaBootstrapper.Instance.player.GetComponent<CharacterStatsController>()._characterBuffCore.currentStats.damage;
+        }
 
         public void Update()
         {
             RaycastHits();
             Destroy(gameObject, 5f);
+            Debug.Log($"Cr Damage : {_damage}");
         }
 
         public void RaycastHits()

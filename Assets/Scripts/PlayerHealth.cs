@@ -9,16 +9,16 @@ namespace Wanderer
     public class PlayerHealth : MonoBehaviour, IDamagable, IHeal
     {
         float _playerCurrentHealth;
-        [SerializeField] float _playerMaxHealth;
+        public float playerMaxHealth;
         [SerializeField] TextMeshProUGUI _playerHealthText;
         //[SerializeField] Slider _hpSlider;
         [SerializeField] Material hpBarMaterial;
         [SerializeField] GameObject go;
         private void Start()
         {
-            _playerCurrentHealth = _playerMaxHealth;
+            _playerCurrentHealth = playerMaxHealth;
             //_hpSlider.value = _playerCurrentHealth;
-            _playerHealthText.text = _playerMaxHealth.ToString();
+            _playerHealthText.text = playerMaxHealth.ToString();
             hpBarMaterial = go.GetComponent<Renderer>().material;
         }
 
@@ -32,7 +32,7 @@ namespace Wanderer
 
             _playerCurrentHealth -= value;
             //_hpSlider.value = _playerCurrentHealth;
-            float multPerc = 100/_playerMaxHealth;
+            float multPerc = 100/playerMaxHealth;
             float percent = multPerc *_playerCurrentHealth/100;
             hpBarMaterial.SetFloat("_Percentage", percent);
             _playerHealthText.text = _playerCurrentHealth.ToString();
@@ -41,11 +41,11 @@ namespace Wanderer
         public void Heal(float value)
         {
             _playerCurrentHealth += value;
-            float multPerc = 100/_playerMaxHealth;
+            float multPerc = 100/playerMaxHealth;
             float percent = multPerc *_playerCurrentHealth/100;
             hpBarMaterial.SetFloat("_Percentage", percent);
             //_hpSlider.value = _playerCurrentHealth;
-            _playerCurrentHealth = Mathf.Clamp(_playerCurrentHealth, 0, _playerMaxHealth);
+            _playerCurrentHealth = Mathf.Clamp(_playerCurrentHealth, 0, playerMaxHealth);
 
             _playerHealthText.text = _playerCurrentHealth.ToString();
         }
