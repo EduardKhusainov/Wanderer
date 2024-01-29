@@ -1,16 +1,18 @@
 using System.Collections;
-using UnityEditor.Animations;
-using UnityEngine;
 using UnityEngine.AI;
-using Wanderer;
+using UnityEngine;
+
+namespace Wanderer
+{
+    
 
 public class EnemyAnimator : MonoBehaviour
 {
    public Animator animator;
-   public AnimatorController animIdle;
-   public AnimatorController animWalk;
-   public AnimatorController animAttack;
-   public AnimatorController animDeath;
+   public RuntimeAnimatorController animIdle;
+   public RuntimeAnimatorController animWalk;
+   public RuntimeAnimatorController animAttack;
+   public RuntimeAnimatorController animDeath;
    public EnemyHealth enemyHealth;
    private IEnumerator coroutine;
     [SerializeField] Material hpBarMaterial;
@@ -88,4 +90,5 @@ public class EnemyAnimator : MonoBehaviour
         transform.LookAt(other.transform.position, Vector3.up);
         StartCoroutine(Attack(other));
     }
+}
 }

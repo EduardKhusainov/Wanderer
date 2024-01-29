@@ -1,7 +1,6 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Wanderer
@@ -12,9 +11,9 @@ namespace Wanderer
         [SerializeField] float _speed;
         public bool isMoving { get; private set; } 
         public Animator animator;
-        public AnimatorController animWalk;
-        public AnimatorController animIdle;
-        public AnimatorController animAttack;
+        public RuntimeAnimatorController animWalk;
+        public RuntimeAnimatorController animIdle;
+        public RuntimeAnimatorController animAttack;
         public float rotationSpeed;
         public bool isTeleported;
         private Vector3 movementVector
