@@ -12,12 +12,17 @@ namespace Wanderer
             [SerializeField] private Button _muteButton;
             [SerializeField] private Slider _musicSlider;
 
-            private Image _muteIcon;                
+            private Image _muteIcon;
+            private NSAudio.AudioSettings _audioSettings =>
+                NSAudio.AudioSettings.Instance;
+            private NSAudio.AudioSystem _audioSystem =>
+                 NSAudio.AudioSystem.Instance;
 
             private void OnDisable()
             {
                 _closeButton.onClick.RemoveListener(OnCloseButtonClick);
                 _muteButton.onClick.RemoveListener(OnMuteButtonClick);
+                _musicSlider.onValueChanged.RemoveListener(OnMusicSliderValueChanged);
             }
 
             private void Awake()
@@ -25,6 +30,7 @@ namespace Wanderer
                 _muteIcon = _muteButton.transform.Find("MuteIcon").GetComponentInChildren<Image>();
                 _closeButton.onClick.AddListener(OnCloseButtonClick);
                 _muteButton.onClick.AddListener(OnMuteButtonClick);
+                _musicSlider.onValueChanged.AddListener(OnMusicSliderValueChanged);
                 _canvasGroup.blocksRaycasts = false;
 
                 SetMuteButtonView();
@@ -34,11 +40,16 @@ namespace Wanderer
 
             private void OnMuteButtonClick()
             {
-                var audioSettings = NSAudio.AudioSettings.Instance;
-                var audioSystem = NSAudio.AudioSystem.Instance;
+                _audioSettings.ToggleMute();
+                _audioSystem.Refresh();
 
-                audioSettings.ToggleMute();
-                audioSystem.MusicSource.volume = audioSettings.MusicVolume;
+                SetMuteButtonView();
+            }
+
+            private void OnMusicSliderValueChanged(float value)
+            {
+                _audioSettings.MusicVolume = value;
+                _audioSystem.MusicSource.volume = _audioSettings.MusicVolume;
 
                 SetMuteButtonView();
             }
