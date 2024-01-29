@@ -49,6 +49,7 @@ namespace Wanderer
             private void OnMenuButtonClick()
             {
                 SceneManager.LoadScene("MainMenu");
+                Show(false);
             }
 
             private void OnReloadButtonClick()
@@ -56,6 +57,7 @@ namespace Wanderer
                 int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
                 SceneManager.LoadScene(currentSceneIndex);
+                Show(false);
             }
         }
     }
