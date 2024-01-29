@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Wanderer.NSAudio;
 
 namespace Wanderer {
     public class MagicWand : MonoBehaviour
@@ -51,7 +52,17 @@ namespace Wanderer {
                 fireballRb.AddForce(((_targetSystem.currentTarget.transform.position + targetOffset) - _spawnPoint.transform.position) * 3, ForceMode.Impulse);
                 _playerController.animator.runtimeAnimatorController = _playerController.animIdle;
                 _playerController.animator.runtimeAnimatorController = _playerController.animAttack;
+
+                PlayShotEffect();
             }
+        }
+
+        private void PlayShotEffect()
+        {
+            var audio = AudioSystem.Instance;
+            var sound = audio.FindClip(CommonSounds.PlayerAttack);
+
+            audio.PlayEffectSound(sound);
         }
 
         IEnumerator Reload(float reloadTime)
