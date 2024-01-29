@@ -37,8 +37,8 @@ namespace Wanderer
 
             private void OnMenuButtonClick()
             {
-                SceneManager.LoadScene("MainMenu");
                 Show(false);
+                SceneManager.LoadScene("MainMenu");
             }
         }
     }
