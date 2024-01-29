@@ -37,13 +37,12 @@ namespace Wanderer
             private void OnUnpauseButtonClick()
             {
                 base.Show(false, _fadeOutTime);
-                SetOverlayStatus(false);
             }
 
             public override void Show(bool isVisible, float animationTime = 0)
             {
                 base.Show(isVisible, animationTime);
-                SetOverlayStatus(true);
+                SetOverlayStatus(isVisible);
             }
 
             private void OnMenuButtonClick()
