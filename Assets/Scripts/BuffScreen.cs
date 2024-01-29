@@ -6,7 +6,7 @@ using Wanderer;
 public class BuffScreen : MonoBehaviour
 {
     [SerializeField] Canvas buffScreen;
-    private bool isBuffed;
+    public bool isBuffed;
     void Update()
     {
         if (ArenaBootstrapper.Instance.isArenaCleaned && !isBuffed)
