@@ -15,15 +15,20 @@ namespace Wanderer
         private EnemyAnimator enemyAnimator;
         public ParticleSystem psEnemeDeath;
         public SkinnedMeshRenderer skinnedMeshRenderer;
+        [SerializeField] Material hpBarMaterial;
+        [SerializeField] GameObject go;
 
         private void Start()
         {
             _enemyCurrentHealth = _enemyMaxHealth;
+            hpBarMaterial = go.GetComponent<Renderer>().material;
         }
         public void TakeDamage(float value)
         {
             _enemyCurrentHealth -= value;
-            _hpSlider.value = _enemyCurrentHealth;
+            float multPerc = 100/_enemyMaxHealth;
+            float percent = multPerc *_enemyCurrentHealth/100;
+            hpBarMaterial.SetFloat("_Percentage", percent);
             if (_enemyCurrentHealth == 0)
             {
                 Death();
@@ -36,7 +41,6 @@ namespace Wanderer
 
         void Death()
         {
-            //enemyAnimator.animator.runtimeAnimatorController = enemyAnimator.animDeath;
             Destroy(gameObject, 1f);
             Instantiate(coin, transform.position + new Vector3(0, 1, 0), coin.transform.rotation);
             StartCoroutine(SpawnPSBubble());

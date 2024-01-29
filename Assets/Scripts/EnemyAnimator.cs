@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.AI;
 using Wanderer;
 
 public class EnemyAnimator : MonoBehaviour
@@ -12,12 +13,22 @@ public class EnemyAnimator : MonoBehaviour
    public AnimatorController animDeath;
    public EnemyHealth enemyHealth;
    private IEnumerator coroutine;
-
+    [SerializeField] Material hpBarMaterial;
+    [SerializeField] GameObject go;
+    bool isClaped;
+    public float fresnel;
+    public float attackSpeed;
    private void Start() 
    {
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = animWalk;
         enemyHealth = GetComponent<EnemyHealth>();
+        if(go != null)
+        {
+            hpBarMaterial = go.GetComponent<Renderer>().material;
+            fresnel = 0f;
+            hpBarMaterial.SetFloat("_Subtract_Float", fresnel);
+        }
    }
 
    private void Update() 
@@ -26,19 +37,23 @@ public class EnemyAnimator : MonoBehaviour
         {
             StopAllCoroutines();
             animator.runtimeAnimatorController = animDeath;
+            enemyHealth.GetComponent<NavMeshAgent>().speed = 0;
         } 
+        if(fresnel > 0.1f && go != null)
+        {
+            hpBarMaterial.SetFloat("_Subtract_Float", fresnel);
+            fresnel -= 0.5f * Time.deltaTime;
+        }
    }
 
    private void OnTriggerEnter(Collider other) 
    {
-        if (!other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            StopAllCoroutines();
-            return;
+            animator.runtimeAnimatorController = animAttack;
+            StartCoroutine(Attack(other));
         }
 
-        animator.runtimeAnimatorController = animAttack;
-        StartCoroutine(Attack(other));
     }
 
    private void OnTriggerExit(Collider other) 
@@ -52,10 +67,12 @@ public class EnemyAnimator : MonoBehaviour
 
     IEnumerator Attack(Collider other)
     {
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(attackSpeed);
         animator.runtimeAnimatorController = animIdle;
         animator.runtimeAnimatorController = animAttack;
-
+        other.gameObject.GetComponent<IDamagable>().TakeDamage(10);
+        isClaped = true;
+        fresnel = 2f;
         if (other == null)
         {
             StopAllCoroutines();

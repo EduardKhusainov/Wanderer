@@ -7,7 +7,7 @@ namespace Wanderer {
     {
         void Update()
         {
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            gameObject.transform.rotation = Quaternion.Euler(-55.08f,180, 0);
         }
     }
 }
