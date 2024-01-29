@@ -2440,6 +2440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvas: {fileID: 963407199}
   _canvasGroup: {fileID: 963407196}
+  _coinsText: {fileID: 945278503}
 --- !u!1 &1026310705
 GameObject:
   m_ObjectHideFlags: 0

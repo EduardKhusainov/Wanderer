@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Wanderer;
 
 namespace Wanderer
 {
@@ -10,6 +7,9 @@ namespace Wanderer
         public float cameraZOffset;
         private void LateUpdate()
         {
+            if (ArenaBootstrapper.Instance.player == null)
+                return;
+
             Vector3 p = ArenaBootstrapper.Instance.player.transform.position;
             p.z -= cameraZOffset;
             p.x = transform.position.x;

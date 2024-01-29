@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -7,18 +5,14 @@ namespace Wanderer
 {
     public class PlayerFinance : MonoBehaviour, ICoinable
     {
+        public int Amount => _money;
+
         int _money = 0;
         [SerializeField] TextMeshProUGUI _textMeshPro;
 
-        void Start()
-        {
-            _textMeshPro.text = _money.ToString();
-        }
+        void Start() => _textMeshPro.text = _money.ToString();
 
-        public void AddMoney(int value)
-        {
+        public void AddMoney(int value) =>
             _money += value;
-            _textMeshPro.text = _money.ToString();
-        }
     }
 }

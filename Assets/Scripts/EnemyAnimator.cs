@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 using Wanderer;
@@ -32,12 +31,15 @@ public class EnemyAnimator : MonoBehaviour
 
    private void OnTriggerEnter(Collider other) 
    {
-        if(other.gameObject.CompareTag("Player"))
+        if (!other.gameObject.CompareTag("Player"))
         {
-            animator.runtimeAnimatorController = animAttack;
-            StartCoroutine(Attack(other));
-        }  
-   }
+            StopAllCoroutines();
+            return;
+        }
+
+        animator.runtimeAnimatorController = animAttack;
+        StartCoroutine(Attack(other));
+    }
 
    private void OnTriggerExit(Collider other) 
    {
@@ -53,6 +55,13 @@ public class EnemyAnimator : MonoBehaviour
         yield return new WaitForSeconds(1.7f);
         animator.runtimeAnimatorController = animIdle;
         animator.runtimeAnimatorController = animAttack;
+
+        if (other == null)
+        {
+            StopAllCoroutines();
+            yield break;
+        }
+
         transform.LookAt(other.transform.position, Vector3.up);
         StartCoroutine(Attack(other));
     }
