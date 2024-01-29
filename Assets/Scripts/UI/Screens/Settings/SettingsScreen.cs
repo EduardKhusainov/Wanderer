@@ -12,6 +12,8 @@ namespace Wanderer
             [SerializeField] private Button _muteButton;
             [SerializeField] private Slider _musicSlider;
 
+            private Image _muteIcon;                
+
             private void OnDisable()
             {
                 _closeButton.onClick.RemoveListener(OnCloseButtonClick);
@@ -20,19 +22,29 @@ namespace Wanderer
 
             private void Awake()
             {
+                _muteIcon = _muteButton.transform.Find("MuteIcon").GetComponentInChildren<Image>();
                 _closeButton.onClick.AddListener(OnCloseButtonClick);
                 _muteButton.onClick.AddListener(OnMuteButtonClick);
                 _canvasGroup.blocksRaycasts = false;
+
+                SetMuteButtonView();
             }
 
             private void OnCloseButtonClick() => Show(false);
 
             private void OnMuteButtonClick()
             {
-                var muteIcon = _muteButton.transform.Find("MuteIcon").GetComponentInChildren<Image>();
+                var audioSettings = NSAudio.AudioSettings.Instance;
+                var audioSystem = NSAudio.AudioSystem.Instance;
 
-                muteIcon.gameObject.SetActive(!muteIcon.gameObject.activeSelf);
+                audioSettings.ToggleMute();
+                audioSystem.MusicSource.volume = audioSettings.MusicVolume;
+
+                SetMuteButtonView();
             }
+
+            private void SetMuteButtonView() =>
+                _muteIcon.gameObject.SetActive(NSAudio.AudioSettings.Instance.IsMuted);
         }
     }
 }

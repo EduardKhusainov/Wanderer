@@ -2007,7 +2007,7 @@ MonoBehaviour:
   _canvasGroup: {fileID: 1275672471}
   _closeButton: {fileID: 957838412}
   _muteButton: {fileID: 716860393}
-  _musicSlider: {fileID: 0}
+  _musicSlider: {fileID: 888927351}
 --- !u!225 &1275672471
 CanvasGroup:
   m_ObjectHideFlags: 0

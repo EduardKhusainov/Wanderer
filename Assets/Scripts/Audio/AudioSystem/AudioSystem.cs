@@ -53,6 +53,11 @@ namespace Wanderer
                 }
             }
 
+            public void Refresh()
+            {
+                SetAudioSettings();
+            }
+
             public void PlayMusic(AudioClip clip = null, bool isLooping = false)
             {
                 if (clip == null && _musicClips.Count <= 0) return;

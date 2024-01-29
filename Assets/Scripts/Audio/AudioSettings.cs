@@ -11,9 +11,38 @@ namespace Wanderer
             [SerializeField] private float _effectsVolume;
             [SerializeField] private float _voiceVolume;
 
-            public float MusicVolume { get => _musicVolume; set => _musicVolume = value; }
-            public float EffectsVolume { get => _effectsVolume; set => _effectsVolume = value; }
-            public float VoiceVolume { get => _voiceVolume; set => _voiceVolume = value; }
+            private bool _isMuted;
+
+            public float MusicVolume
+            {
+                get => _isMuted ? 0 : _musicVolume;
+                set => _musicVolume = value;
+            }
+
+            public float EffectsVolume
+            {
+                get => _isMuted ? 0 : _effectsVolume;
+                set => _effectsVolume = value;
+            }
+
+            public float VoiceVolume
+            {
+                get => _isMuted ? 0 : _voiceVolume;
+                set => _voiceVolume = value;
+            }
+
+            public bool IsMuted
+            {
+                get => _isMuted;
+                set => _isMuted = value;
+            }
+
+            public void ToggleMute()
+            {
+                var audio = AudioSystem.Instance;
+                IsMuted = !IsMuted;
+                audio.Refresh();
+            }
         }
     }
 }
