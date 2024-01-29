@@ -24,15 +24,21 @@ namespace Wanderer
         {
             _enemyCurrentHealth -= value;
             _hpSlider.value = _enemyCurrentHealth;
-            if (_enemyCurrentHealth <= 0)
+            if (_enemyCurrentHealth == 0)
+            {
                 Death();
+            }
+            if(_enemyCurrentHealth < 0)
+            {
+                _enemyCurrentHealth = 0;
+            }
         }
 
         void Death()
         {
             //enemyAnimator.animator.runtimeAnimatorController = enemyAnimator.animDeath;
             Destroy(gameObject, 1f);
-            Instantiate(coin, transform.position, coin.transform.rotation);
+            Instantiate(coin, transform.position + new Vector3(0, 1, 0), coin.transform.rotation);
             StartCoroutine(SpawnPSBubble());
         }
 

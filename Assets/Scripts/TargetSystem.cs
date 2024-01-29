@@ -14,11 +14,12 @@ namespace Wanderer {
         private Collider[] _enemyColliders = new Collider[0];
         private PlayerController _playerController;
         int currentIndex = 0;
-        private ChangeArena changeArena;
+        private Magnet magnet;
+        public GameObject portalTrigger;
         private void Start() 
         {
             _playerController = GetComponent<PlayerController>();    
-             changeArena = FindObjectOfType<ChangeArena>();
+            magnet = FindObjectOfType<Magnet>();
         }
         void PlayerRotate()
         {
@@ -49,7 +50,9 @@ namespace Wanderer {
 
             if (_enemyColliders.Length >= 1)
             {
-                    NearTarget();                    
+                    NearTarget();   
+                    magnet.isArenaCleaned = false; 
+                    portalTrigger.SetActive(false);                
             }
 
             else if (_enemyColliders.Length == 0)
@@ -57,8 +60,8 @@ namespace Wanderer {
                 currentTarget = null;
                 if (_enemyColliders.Length == 0)
                 {
-                    ArenaBootstrapper.Instance.isArenaCleaned = true;
-
+                    magnet.isArenaCleaned = true;
+                    portalTrigger.SetActive(true);
                 }
             }
             else
