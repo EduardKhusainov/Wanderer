@@ -38,7 +38,7 @@ namespace Wanderer
 
         private async void ShowLevelChanger()
         {
-            var canvas = FindObjectOfType<LevelChangeOverlay>();
+            var canvas = CanvasManager.Instance.SetCanvases[2].GetComponent<LevelChangeOverlay>();
             var fadeDelay = 1f;
 
             canvas.Show(true, fadeDelay);

@@ -37,6 +37,7 @@ namespace Wanderer
             private void OnUnpauseButtonClick()
             {
                 base.Show(false, _fadeOutTime);
+                SetOverlayStatus(false);
             }
 
             public override void Show(bool isVisible, float animationTime = 0)
@@ -48,6 +49,7 @@ namespace Wanderer
             private void OnMenuButtonClick()
             {
                 Show(false);
+                SetOverlayStatus(false);
                 SceneManager.LoadScene("MainMenu");
             }
 
@@ -56,6 +58,7 @@ namespace Wanderer
                 int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
                 Show(false);
+                SetOverlayStatus(false);
                 SceneManager.LoadScene(currentSceneIndex);
             }
         }

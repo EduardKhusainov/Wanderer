@@ -56,7 +56,7 @@ namespace Wanderer
 
         private void ShowDeathScreen()
         {
-            var canvas = FindObjectOfType<GameOverOverlay>();
+            var canvas = CanvasManager.Instance.SetCanvases[1].GetComponent<GameOverOverlay>();
             var coinsAmount = transform.GetComponent<PlayerFinance>().Amount;
             var fadeDelay = 1.6f;
 
