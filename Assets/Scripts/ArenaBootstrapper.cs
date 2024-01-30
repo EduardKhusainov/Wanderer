@@ -34,9 +34,10 @@ namespace Wanderer
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) &&
+                SceneManager.GetActiveScene().name != "MainScene")
             {
-                var screen = FindObjectOfType<PauseOverlay>();
+                var screen = CanvasManager.Instance.SetCanvases[0].GetComponent<PauseOverlay>();
 
                 if (screen.IsActive)
                     return;

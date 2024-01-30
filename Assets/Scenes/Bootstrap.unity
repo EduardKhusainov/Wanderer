@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4848,9 +4848,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 223472270}
   - {fileID: 1600527415}
   - {fileID: 963407195}
+  - {fileID: 223472270}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1610146633
@@ -4867,9 +4867,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultOrder: 1
   _setCanvases:
-  - {fileID: 223472275}
   - {fileID: 1600527420}
   - {fileID: 963407199}
+  - {fileID: 223472275}
 --- !u!1 &1657363460
 GameObject:
   m_ObjectHideFlags: 0
