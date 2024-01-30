@@ -18,7 +18,7 @@ public class PlayerResetPos : MonoBehaviour
 
     private void Update() 
     {
-        if(playerController.isTeleported  && playerController != null)
+        if(isMove && playerController != null)
         {
             playerController.transform.position = startPos;
             StartCoroutine(ResetBool());
