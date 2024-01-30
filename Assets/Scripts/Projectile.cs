@@ -10,10 +10,11 @@ namespace Wandere {
         
         public bool isHit;
         [SerializeField] float speed;
+        PlayerStats playerStats;
 
         private void Start() 
         {
-            _damage = FindObjectOfType<CharacterStatsController>()._baseDamage;
+            _damage = FindObjectOfType<PlayerStats>().playerDamage;
         }
         public void Update()
         {

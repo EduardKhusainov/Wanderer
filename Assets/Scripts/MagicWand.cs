@@ -11,14 +11,12 @@ namespace Wanderer {
         [SerializeField] GameObject _spawnPoint;
         [SerializeField] GameObject _spell;
         [SerializeField] float _reloadTime;
-        private CharacterController _characterController;
         private bool _isShooted;
         private PlayerController _playerController;
         public Vector3 targetOffset;
         void Start()
         {
             _targetSystem = GetComponent<TargetSystem>();
-            _characterController = GetComponent<CharacterController>();
             _playerController = GetComponent<PlayerController>();
         }
 

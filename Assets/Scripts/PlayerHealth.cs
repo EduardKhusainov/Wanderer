@@ -14,8 +14,10 @@ namespace Wanderer
         //[SerializeField] Slider _hpSlider;
         [SerializeField] Material hpBarMaterial;
         [SerializeField] GameObject go;
+        [SerializeField] PlayerStats playerStats;
         private void Start()
         {
+            playerMaxHealth = playerStats.playerMaxHealth;
             _playerCurrentHealth = playerMaxHealth;
             //_hpSlider.value = _playerCurrentHealth;
             _playerHealthText.text = playerMaxHealth.ToString();
@@ -34,24 +36,18 @@ namespace Wanderer
                      gameObject.SetActive(false);
                     ShowDeathScreen();
                 }
-                //_hpSlider.value = _playerCurrentHealth;
-                float multPerc = 100/playerMaxHealth;
-                float percent = multPerc *_playerCurrentHealth/100;
-                hpBarMaterial.SetFloat("_Percentage", percent);
-                _playerHealthText.text = _playerCurrentHealth.ToString();
+               ResetHPBar();
             }
         }
 
         public void Heal(float value)
         {
             _playerCurrentHealth += value;
-            float multPerc = 100/playerMaxHealth;
-            float percent = multPerc *_playerCurrentHealth/100;
-            hpBarMaterial.SetFloat("_Percentage", percent);
-            //_hpSlider.value = _playerCurrentHealth;
-            _playerCurrentHealth = Mathf.Clamp(_playerCurrentHealth, 0, playerMaxHealth);
-
-            _playerHealthText.text = _playerCurrentHealth.ToString();
+            if(_playerCurrentHealth > playerMaxHealth)
+            {
+                _playerCurrentHealth = playerMaxHealth;
+            }
+            ResetHPBar();
         }
 
         private void ShowDeathScreen()
@@ -62,6 +58,16 @@ namespace Wanderer
 
             canvas.SetCoinsAmount(coinsAmount);
             canvas.Show(true, fadeDelay);
+        }
+        
+        public void ResetHPBar() 
+        {
+            playerMaxHealth = playerStats.playerMaxHealth;
+            float multPerc = 100/playerMaxHealth;
+            float percent = multPerc *_playerCurrentHealth/100;
+            hpBarMaterial.SetFloat("_Percentage", percent);
+
+            _playerHealthText.text = _playerCurrentHealth.ToString(); 
         }
     }
 }

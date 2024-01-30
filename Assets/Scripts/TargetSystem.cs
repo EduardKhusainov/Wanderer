@@ -9,13 +9,12 @@ namespace Wanderer {
 
         [SerializeField] Texture2D aim;
         [SerializeField] float aimSize = 50;
-
         public GameObject currentTarget { get; private set; }
         private Collider[] _enemyColliders = new Collider[0];
         private PlayerController _playerController;
-        int currentIndex = 0;
         private Magnet magnet;
         public GameObject portalTrigger;
+        ResetBuffBool resetBuffBool;
         private void Start() 
         {
             _playerController = GetComponent<PlayerController>();    
@@ -28,7 +27,7 @@ namespace Wanderer {
                 Vector3 lookPos = currentTarget.transform.position - ArenaBootstrapper.Instance.player.transform.position;
                 lookPos.y = 0;
                 Quaternion rotation = Quaternion.LookRotation(lookPos);
-                ArenaBootstrapper.Instance.player.transform.rotation = Quaternion.Lerp(ArenaBootstrapper.Instance.player.transform.rotation, rotation, 10 * Time.deltaTime);
+                _playerController.transform.rotation = Quaternion.Lerp(_playerController.transform.rotation, rotation, 10 * Time.deltaTime);
             }
         }
 
@@ -46,6 +45,7 @@ namespace Wanderer {
 
         void Update()
         {
+            resetBuffBool = FindObjectOfType<ResetBuffBool>();
             GetTarget();
 
             if (_enemyColliders.Length >= 1)
@@ -61,7 +61,10 @@ namespace Wanderer {
                 if (_enemyColliders.Length == 0)
                 {
                     magnet.isArenaCleaned = true;
-                    portalTrigger.SetActive(true);
+                    if(!resetBuffBool.isTrader && resetBuffBool != null)
+                    {
+                        portalTrigger.SetActive(true);
+                    }
                 }
             }
             else
@@ -79,7 +82,7 @@ namespace Wanderer {
                 currentTarget = _enemyColliders[0].gameObject;
                 foreach (var collider in _enemyColliders)
                 {
-                    if (Vector3.Distance(ArenaBootstrapper.Instance.player.transform.position, collider.gameObject.transform.position) < Vector3.Distance(ArenaBootstrapper.Instance.player.transform.position, currentTarget.gameObject.transform.position))
+                    if (Vector3.Distance(_playerController.transform.position, collider.gameObject.transform.position) < Vector3.Distance(ArenaBootstrapper.Instance.player.transform.position, currentTarget.gameObject.transform.position))
                     {
                         currentTarget = collider.gameObject;
                     }
@@ -91,7 +94,7 @@ namespace Wanderer {
         void GetTarget()
         {
             _enemyColliders = new Collider[0];
-            if(ArenaBootstrapper.Instance.player != null)
+            if(_playerController != null)
             {
              _enemyColliders = Physics.OverlapSphere(ArenaBootstrapper.Instance.player.transform.position,1000, 1 << enemyLayer);
             }

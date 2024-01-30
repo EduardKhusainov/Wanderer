@@ -57,7 +57,6 @@ namespace Wanderer
            var sh = ps.shape;
            sh.shapeType = ParticleSystemShapeType.SkinnedMeshRenderer;
            sh.skinnedMeshRenderer = skinnedMeshRenderer;
-           Debug.Log("Spawned");
         }
     }
 

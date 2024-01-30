@@ -14,7 +14,6 @@ public class EnemyAnimator : MonoBehaviour
    public RuntimeAnimatorController animAttack;
    public RuntimeAnimatorController animDeath;
    public EnemyHealth enemyHealth;
-   private IEnumerator coroutine;
     [SerializeField] Material hpBarMaterial;
     [SerializeField] GameObject go;
     bool isClaped;

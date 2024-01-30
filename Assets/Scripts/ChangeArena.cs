@@ -9,7 +9,6 @@ namespace Wanderer {
     {
         private bool _canUploadNewScene = false;
         private Collider[] _arenas;
-        private int arenaNum = 0;
         [SerializeField] LayerMask _arenaLayer;
         [SerializeField] GameObject[] maps;
 

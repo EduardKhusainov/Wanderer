@@ -15,7 +15,7 @@ namespace Wanderer
 
         private void Awake()
         {
-            if (Instance != null && Instance != this)
+            if(Instance != null && Instance != this)
             {
                 Destroy(this);
             }
@@ -37,7 +37,7 @@ namespace Wanderer
             if (Input.GetKeyDown(KeyCode.Escape) &&
                 SceneManager.GetActiveScene().name != "MainScene")
             {
-                var screen = CanvasManager.Instance.SetCanvases[0].GetComponent<PauseOverlay>();
+                var screen = FindObjectOfType<PauseOverlay>();
 
                 if (screen.IsActive)
                     return;
