@@ -36,9 +36,9 @@ namespace Wanderer
             {
                 if(!isTeleported)
                 {
-                MoveLogic();
-                isMoving = true;
-                animator.runtimeAnimatorController = animWalk;
+                    MoveLogic();
+                    isMoving = true;
+                    animator.runtimeAnimatorController = animWalk;
                 }
             }
             else
@@ -60,19 +60,5 @@ namespace Wanderer
             
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.name == "UpperCameraBorder" || other.name == "DownCameraBorder")
-            {
-                ArenaBootstrapper.Instance.mainCamera.GetComponent<CameraMovement>().enabled = false;
-            }
-        }
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.name == "UpperCameraBorder" || other.name == "DownCameraBorder")
-            {
-                ArenaBootstrapper.Instance.mainCamera.GetComponent<CameraMovement>().enabled = true;
-            }
-        }
     }
 }

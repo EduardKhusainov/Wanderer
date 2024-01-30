@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Wanderer.NSUI.Overlay;
 using Wanderer.NSUI.Screen;
