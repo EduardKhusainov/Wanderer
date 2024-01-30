@@ -31,6 +31,7 @@ namespace Wanderer
                 playerController.transform.position = new Vector3(0, 0, -15f);
                 playerResetPos.isMove = true;
                 this.gameObject.SetActive(false);
+                GameObject.Find("SceneAdministrator").GetComponent<BuffScreen>().isBuffed = false;
             }
         }
 

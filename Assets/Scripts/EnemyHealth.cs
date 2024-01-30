@@ -29,14 +29,13 @@ namespace Wanderer
             float multPerc = 100/_enemyMaxHealth;
             float percent = multPerc *_enemyCurrentHealth/100;
             hpBarMaterial.SetFloat("_Percentage", percent);
-            if (_enemyCurrentHealth == 0)
+            if (_enemyCurrentHealth <= 0)
             {
                 Death();
             }
             if(_enemyCurrentHealth < 0)
             {
                 _enemyCurrentHealth = 0;
-                Death();
             }
         }
 
