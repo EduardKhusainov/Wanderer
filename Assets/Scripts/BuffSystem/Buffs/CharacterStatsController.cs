@@ -7,9 +7,9 @@ namespace Wanderer
 {
     public class CharacterStatsController : MonoBehaviour
     {
-        public CharacterBuffCore _characterBuffCore;
         [SerializeField] private int _baseHP;
-        [SerializeField] private int _baseDamage;
+        public int _baseDamage;
+         public CharacterBuffCore _characterBuffCore;
 
         private void Start()
         {
@@ -20,12 +20,9 @@ namespace Wanderer
                 isImmortal = false,
             };
             Init(new CharacterBuffCore(baseStats));
+            _characterBuffCore = FindObjectOfType<CharacterBuffCore>();
 
             Debug.Log($"Character initialized. Health : {_characterBuffCore.currentStats.health}, Damage : {_characterBuffCore.currentStats.damage}, Is immortal : {_characterBuffCore.currentStats.isImmortal}");
-        }
-        private void Update()
-        {
-            Debug.Log($"Damage : {_characterBuffCore.currentStats.damage}");
         }
 
         public void Init(CharacterBuffCore characterBuffCore)

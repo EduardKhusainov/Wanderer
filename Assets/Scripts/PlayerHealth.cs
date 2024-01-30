@@ -24,18 +24,22 @@ namespace Wanderer
 
         public void TakeDamage(float value)
         {
-            if (_playerCurrentHealth <= 0)
+            if(_playerCurrentHealth > 0 && _playerCurrentHealth != 0)
             {
-                gameObject.SetActive(false);
-                ShowDeathScreen();
+                _playerCurrentHealth -= value;
+                if(_playerCurrentHealth <= 0)
+                {
+                    _playerCurrentHealth = 0;
+                    _playerHealthText.text = _playerCurrentHealth.ToString();
+                     gameObject.SetActive(false);
+                    ShowDeathScreen();
+                }
+                //_hpSlider.value = _playerCurrentHealth;
+                float multPerc = 100/playerMaxHealth;
+                float percent = multPerc *_playerCurrentHealth/100;
+                hpBarMaterial.SetFloat("_Percentage", percent);
+                _playerHealthText.text = _playerCurrentHealth.ToString();
             }
-
-            _playerCurrentHealth -= value;
-            //_hpSlider.value = _playerCurrentHealth;
-            float multPerc = 100/playerMaxHealth;
-            float percent = multPerc *_playerCurrentHealth/100;
-            hpBarMaterial.SetFloat("_Percentage", percent);
-            _playerHealthText.text = _playerCurrentHealth.ToString();
         }
 
         public void Heal(float value)
@@ -52,7 +56,7 @@ namespace Wanderer
 
         private void ShowDeathScreen()
         {
-            var canvas = CanvasManager.Instance.SetCanvases[1].GetComponent<GameOverOverlay>();
+            var canvas = FindObjectOfType<GameOverOverlay>();
             var coinsAmount = transform.GetComponent<PlayerFinance>().Amount;
             var fadeDelay = 1.6f;
 

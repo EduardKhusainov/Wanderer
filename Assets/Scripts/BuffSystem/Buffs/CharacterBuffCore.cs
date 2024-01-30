@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Wanderer {
-    public class CharacterBuffCore : IBuffable
+    public class CharacterBuffCore : MonoBehaviour, IBuffable
     {
         public PlayerStats baseStats {  get; }
         public PlayerStats currentStats;

@@ -37,7 +37,7 @@ public class EnemyAnimator : MonoBehaviour
 
    private void Update() 
    {
-        if(enemyHealth._enemyCurrentHealth <=0)
+        if(enemyHealth._enemyCurrentHealth <= 0)
         {
             StopAllCoroutines();
             animator.runtimeAnimatorController = animDeath;
@@ -72,23 +72,32 @@ public class EnemyAnimator : MonoBehaviour
     IEnumerator Attack(Collider other)
     {
         yield return new WaitForSeconds(attackSpeed);
-        animator.runtimeAnimatorController = animIdle;
-        animator.runtimeAnimatorController = animAttack;
-        other.gameObject.GetComponent<IDamagable>().TakeDamage(damage);
-        isClaped = true;
-        fresnel = 2f;
-        if(arsPart != null)
+        if(other.gameObject.activeSelf)
         {
+            Debug.Log(other.gameObject);
+            animator.runtimeAnimatorController = animIdle;
+            animator.runtimeAnimatorController = animAttack;
+            other.gameObject.GetComponent<IDamagable>().TakeDamage(damage);
+            isClaped = true;
+            fresnel = 2f;
+            if(arsPart != null)
+            {
             arsPart.Play();
-        }
-        if (other == null)
-        {
+            }
+            if (other == null)
+            {
             StopAllCoroutines();
             yield break;
-        }
+            }
 
-        transform.LookAt(other.transform.position, Vector3.up);
-        StartCoroutine(Attack(other));
+            transform.LookAt(other.transform.position, Vector3.up);
+            StartCoroutine(Attack(other));
+        }
+        else
+        {
+            animator.runtimeAnimatorController = animIdle;
+            StopAllCoroutines();
+        }
     }
 }
 }

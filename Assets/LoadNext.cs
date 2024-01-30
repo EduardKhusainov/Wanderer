@@ -31,13 +31,13 @@ namespace Wanderer
                 playerController.transform.position = new Vector3(0, 0, -15f);
                 playerResetPos.isMove = true;
                 this.gameObject.SetActive(false);
-                GameObject.Find("SceneAdministrator").GetComponent<BuffScreen>().isBuffed = false;
+                FindObjectOfType<BuffScreen>().isBuffed = true;
             }
         }
 
         private async void ShowLevelChanger()
         {
-            var canvas = CanvasManager.Instance.SetCanvases[2].GetComponent<LevelChangeOverlay>();
+            var canvas = FindObjectOfType<LevelChangeOverlay>();
             var fadeDelay = 1f;
 
             canvas.Show(true, fadeDelay);

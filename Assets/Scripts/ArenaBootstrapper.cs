@@ -36,9 +36,7 @@ namespace Wanderer
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                    var screen = CanvasManager.Instance.SetCanvases
-                    .Select(canvas => canvas.GetComponent<PauseOverlay>())
-                    .FirstOrDefault();
+                var screen = FindObjectOfType<PauseOverlay>();
 
                 if (screen.IsActive)
                     return;

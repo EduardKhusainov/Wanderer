@@ -17,6 +17,7 @@ namespace Wanderer
         public SkinnedMeshRenderer skinnedMeshRenderer;
         [SerializeField] Material hpBarMaterial;
         [SerializeField] GameObject go;
+        bool isDeath;
 
         private void Start()
         {
@@ -25,18 +26,21 @@ namespace Wanderer
         }
         public void TakeDamage(float value)
         {
-            _enemyCurrentHealth -= value;
+            if(_enemyCurrentHealth > 0 && _enemyCurrentHealth != 0)
+            {
+                _enemyCurrentHealth -= value;
+            }
+            if(_enemyCurrentHealth <= 0 && !isDeath)
+            {
+                _enemyCurrentHealth = 0;
+                Death();
+                isDeath = true;
+            }
+            
+
             float multPerc = 100/_enemyMaxHealth;
             float percent = multPerc *_enemyCurrentHealth/100;
             hpBarMaterial.SetFloat("_Percentage", percent);
-            if (_enemyCurrentHealth <= 0)
-            {
-                Death();
-            }
-            if(_enemyCurrentHealth < 0)
-            {
-                _enemyCurrentHealth = 0;
-            }
         }
 
         void Death()

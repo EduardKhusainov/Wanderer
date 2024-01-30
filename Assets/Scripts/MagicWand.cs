@@ -47,12 +47,7 @@ namespace Wanderer {
         {
             if (_targetSystem.currentTarget != null)
             {
-                GameObject fireball = Instantiate(_spell, _spawnPoint.transform.position, Quaternion.identity);
-                Rigidbody fireballRb = fireball.GetComponent<Rigidbody>();
-                fireballRb.AddForce(((_targetSystem.currentTarget.transform.position + targetOffset) - _spawnPoint.transform.position) * 3, ForceMode.Impulse);
-                _playerController.animator.runtimeAnimatorController = _playerController.animIdle;
-                _playerController.animator.runtimeAnimatorController = _playerController.animAttack;
-
+                Instantiate(_spell, _spawnPoint.transform.position, transform.rotation);
                 PlayShotEffect();
             }
         }

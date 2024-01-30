@@ -7,10 +7,15 @@ namespace Wanderer
     public class Coin : MonoBehaviour
     {
         [SerializeField] int value;
+        Magnet magnet;
         private void OnTriggerEnter(Collider coll)
         {
-            coll.gameObject.GetComponent<ICoinable>()?.AddMoney(value);
-            Destroy(gameObject);
+            magnet = FindObjectOfType<Magnet>();
+            if(magnet.isArenaCleaned)
+            {
+                coll.gameObject.GetComponent<ICoinable>()?.AddMoney(value);
+                Destroy(gameObject);
+            }
         }
     }
 }

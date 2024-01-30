@@ -6,20 +6,21 @@ using Wanderer;
 namespace Wandere {
     public class Projectile : MonoBehaviour
     {
-        private float _damage;
+        public float _damage;
         
         public bool isHit;
+        [SerializeField] float speed;
 
-        private void Awake()
+        private void Start() 
         {
-            _damage = ArenaBootstrapper.Instance.player.GetComponent<CharacterStatsController>()._characterBuffCore.currentStats.damage;
+            _damage = FindObjectOfType<CharacterStatsController>()._baseDamage;
         }
-
         public void Update()
         {
             RaycastHits();
             Destroy(gameObject, 5f);
-            Debug.Log($"Cr Damage : {_damage}");
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            
         }
 
         public void RaycastHits()
@@ -27,7 +28,7 @@ namespace Wandere {
             RaycastHit hit;
 
 
-            if (Physics.SphereCast(transform.position, 0.5f, Vector3.forward, out hit, 0.5f, 1<<8) && !isHit)
+            if (Physics.SphereCast(transform.position, 0.5f, Vector3.forward, out hit, 0.1f, 1<<8) && !isHit)
             {
                 isHit = true;
                 hit.collider.GetComponent<IDamagable>()?.TakeDamage(_damage);
