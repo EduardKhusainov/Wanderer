@@ -29,6 +29,7 @@ namespace Wanderer
         private void Start()
         {
             _characterController = GetComponentInChildren<CharacterController>();
+            isTeleported = false;
         }
         void Update()
         {
@@ -59,6 +60,5 @@ namespace Wanderer
             }           
             
         }
-
     }
 }
