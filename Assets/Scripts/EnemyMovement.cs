@@ -8,10 +8,10 @@ namespace Wanderer
     public class EnemyMovement : MonoBehaviour
     {
         NavMeshAgent agent;
-        EnemyHealth enemyHealth;
+        public EnemyHealth enemyHealth;
         void Start()
         {
-            enemyHealth = GetComponent<EnemyHealth>();
+            enemyHealth = GetComponentInChildren<EnemyHealth>();
             agent = GetComponent<NavMeshAgent>();
         }
 

@@ -6,9 +6,10 @@ public class Boss : MonoBehaviour
 {
     [SerializeField] GameObject meduzaPref;
     [SerializeField] GameObject[] positions;
+    
     private void Start() 
     {
-        InvokeRepeating("MinionSpawn", 10f, 10f);
+        InvokeRepeating("MinionSpawn", 10f, 17f);
     }
 
     public void MinionSpawn()

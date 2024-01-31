@@ -50,10 +50,10 @@ namespace Wanderer
             ResetHPBar();
         }
 
-        private void ShowDeathScreen()
+        public void ShowDeathScreen()
         {
             var canvas = CanvasManager.Instance.SetCanvases[1].GetComponent<GameOverOverlay>();
-            var coinsAmount = transform.GetComponent<PlayerFinance>().Amount;
+            var coinsAmount = transform.GetComponent<PlayerFinance>()._money;
             var fadeDelay = 1.6f;
 
             canvas.SetCoinsAmount(coinsAmount);
@@ -66,7 +66,6 @@ namespace Wanderer
             float multPerc = 100/playerMaxHealth;
             float percent = multPerc *_playerCurrentHealth/100;
             hpBarMaterial.SetFloat("_Percentage", percent);
-
             _playerHealthText.text = _playerCurrentHealth.ToString(); 
         }
     }

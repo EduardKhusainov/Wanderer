@@ -17,12 +17,17 @@ namespace Wanderer
         public SkinnedMeshRenderer skinnedMeshRenderer;
         [SerializeField] Material hpBarMaterial;
         [SerializeField] GameObject go;
+        [SerializeField] GameObject mainGo;
         bool isDeath;
+        PlayerStats playerStats;
+        PlayerHealth playerHealth;
 
         private void Start()
         {
             _enemyCurrentHealth = _enemyMaxHealth;
             hpBarMaterial = go.GetComponent<Renderer>().material;
+            playerStats = FindObjectOfType<PlayerStats>();
+            playerHealth = FindObjectOfType<PlayerHealth>();
         }
         public void TakeDamage(float value)
         {
@@ -45,9 +50,17 @@ namespace Wanderer
 
         void Death()
         {
-            Destroy(gameObject, 1f);
+            Destroy(mainGo, 1f);
             Instantiate(coin, transform.position + new Vector3(0, 1, 0), coin.transform.rotation);
             StartCoroutine(SpawnPSBubble());
+            if(playerStats.isVamp)
+            {
+                int chanceToHeal = Random.Range(0, 10);
+                if(chanceToHeal == 3)
+                {
+                    playerHealth.Heal(playerStats.vampHealAmmount);
+                }
+            }
         }
 
         IEnumerator SpawnPSBubble()

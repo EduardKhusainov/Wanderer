@@ -9,18 +9,23 @@ namespace Wanderer
     {
         [SerializeField] GameObject[] maps;
         [SerializeField] PlayerController playerController;
+        PlayerHealth playerHealth;
         PlayerResetPos playerResetPos;
-        int currentIndex;
+        public int currentIndex;
+        public GameObject allMaps;
+        Magnet magnet;
         private void Start()
         {
+            playerHealth = FindObjectOfType<PlayerHealth>();
             playerController = FindObjectOfType<PlayerController>();
             playerResetPos = FindObjectOfType<PlayerResetPos>();
             currentIndex = 0;
+            magnet = FindObjectOfType<Magnet>();
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (other.gameObject.CompareTag("Player") && currentIndex < maps.Length - 1)
             {
                 ShowLevelChanger();
                 maps[currentIndex].SetActive(false);
@@ -29,6 +34,7 @@ namespace Wanderer
                 playerController.isTeleported = true;
                 playerController.transform.position = new Vector3(0, 0, -15f);
                 playerResetPos.isMove = true;
+                magnet.isArenaCleaned = false;
                 this.gameObject.SetActive(false);
             }
         }

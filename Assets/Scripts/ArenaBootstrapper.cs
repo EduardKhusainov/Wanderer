@@ -22,7 +22,6 @@ namespace Wanderer
             else
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject);
             }
         }
 

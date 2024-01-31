@@ -12,15 +12,27 @@ namespace Wanderer
             [SerializeField] private Image _playerIcon;
             [SerializeField] private Transform _backgroundTransform;
             [SerializeField] private Transform[] _levels;
+            Vector3 startPos;
+            public int _levelIndex;
+            LoadNext loadNext;
+            public bool isScroll;
 
-            private int _levelIndex = 0;
-
+            private void Start() 
+            {
+                startPos = _backgroundTransform.position;    
+            }
             public async Task PlayAnimationAsync()
             {
+                loadNext = FindObjectOfType<LoadNext>();
+                _levelIndex = loadNext.currentIndex;
+                if(_levelIndex == 0)
+                {
+                    _backgroundTransform.position = startPos;
+                }
                 if (_levels[_levelIndex] == null)
                     return;
 
-                var animationTime = 1f;
+                var animationTime = 0.5f;
                 var delayTimeMillis = 1200;
 
                 await Task.Delay(delayTimeMillis);
@@ -29,7 +41,6 @@ namespace Wanderer
 
                 _backgroundTransform.DOMoveY(_backgroundTransform.position.y + distanceToMove, animationTime)
                     .SetEase(Ease.Linear);
-                _levelIndex++;
 
                 await Task.Delay(delayTimeMillis);
             }

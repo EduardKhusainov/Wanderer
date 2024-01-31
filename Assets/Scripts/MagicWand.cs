@@ -10,7 +10,7 @@ namespace Wanderer {
 
         [SerializeField] GameObject _spawnPoint;
         [SerializeField] GameObject _spell;
-        [SerializeField] float _reloadTime;
+        public float _reloadTime;
         private bool _isShooted;
         private PlayerController _playerController;
         public Vector3 targetOffset;

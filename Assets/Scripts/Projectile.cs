@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Wanderer;
 
@@ -9,12 +10,18 @@ namespace Wandere {
         public float _damage;
         
         public bool isHit;
-        [SerializeField] float speed;
+        public float speed;
         PlayerStats playerStats;
+        PlayerHealth playerHealth;
+        private int Layer = 3;
 
         private void Start() 
         {
             _damage = FindObjectOfType<PlayerStats>().playerDamage;
+            playerStats = FindObjectOfType<PlayerStats>();
+            playerHealth = FindObjectOfType<PlayerHealth>();
+            speed = playerStats.bulletSpeed;
+
         }
         public void Update()
         {
@@ -29,31 +36,68 @@ namespace Wandere {
             RaycastHit hit;
 
 
-            if (Physics.SphereCast(transform.position, 0.5f, Vector3.forward, out hit, 0.1f, 1<<8) && !isHit)
+            if (Physics.SphereCast(transform.position, 0.5f, Vector3.forward, out hit, 0.2f, 1<<Layer) && !isHit)
             {
-                isHit = true;
-                hit.collider.GetComponent<IDamagable>()?.TakeDamage(_damage);
-                Destroy(gameObject);
+                DoDamage(hit);
             }
-            if (Physics.SphereCast(transform.position, 0.5f, Vector3.left, out hit, 0.1f, 1<<8) && !isHit)
+            if (Physics.SphereCast(transform.position, 0.5f, Vector3.left, out hit, 0.2f, 1<<Layer) && !isHit)
             {
-                isHit = true;
-                hit.collider.GetComponent<IDamagable>()?.TakeDamage(_damage);
-                Destroy(gameObject);
+                DoDamage(hit);
             }
-            if (Physics.SphereCast(transform.position, 0.5f, Vector3.right, out hit, 0.1f, 1<<8) && !isHit)
+            if (Physics.SphereCast(transform.position, 0.5f, Vector3.right, out hit, 0.2f, 1<<Layer) && !isHit)
             {
-                isHit = true;
-                hit.collider.GetComponent<IDamagable>()?.TakeDamage(_damage);
-                Destroy(gameObject);
+               DoDamage(hit);
             }
-            if(Physics.SphereCast(transform.position, 0.5f, Vector3.down, out hit, 0.1f, 1<<8) && !isHit)
+            if(Physics.SphereCast(transform.position, 0.5f, Vector3.down, out hit, 0.2f, 1<<Layer) && !isHit)
             {
-                isHit = true;
-                hit.collider.GetComponent<IDamagable>()?.TakeDamage(_damage);
+               DoDamage(hit);
+            }
+            if(Physics.SphereCast(transform.position, 0.5f, Vector3.forward, out hit, 0.05f, 1 <<0))
+            {
                 Destroy(gameObject);
             }
         
+        }
+
+        public void DoDamage(RaycastHit hit)
+        {
+            isHit = true;
+            if(playerStats.isCrit)
+            {
+                int critCnahce = Random.Range(0, 1000);
+                if(critCnahce < 100)
+                {
+                    _damage = playerStats.currentCoeff * playerStats.playerDamage + playerStats.playerDamage;
+                    hit.collider.GetComponent<IDamagable>()?.TakeDamage(_damage);
+                    HealFromHit();
+                }   
+                else
+                {
+                    _damage = playerStats.playerDamage;
+                    hit.collider.GetComponent<IDamagable>()?.TakeDamage(_damage);
+                    HealFromHit();
+                }
+            }
+            else
+            {
+                _damage = playerStats.playerDamage;
+                hit.collider.GetComponent<IDamagable>()?.TakeDamage(_damage);
+                HealFromHit();
+            }
+            Destroy(gameObject);
+        }
+
+        public void HealFromHit()
+        {
+            if(playerStats.isVampfromHit)
+            {
+                int chance = Random.Range(0, 100);
+                if(chance <=10)
+                {
+                    float healAmmount = _damage * 0.5f;
+                    playerHealth.Heal(healAmmount);
+                }
+            }
         }
     }
 }

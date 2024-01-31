@@ -96,7 +96,7 @@ namespace Wanderer {
             _enemyColliders = new Collider[0];
             if(_playerController != null)
             {
-             _enemyColliders = Physics.OverlapSphere(ArenaBootstrapper.Instance.player.transform.position,1000, 1 << enemyLayer);
+              _enemyColliders = Physics.OverlapSphere(ArenaBootstrapper.Instance.player.transform.position,1000, 1 << enemyLayer);
             }
 
             if (currentTarget) return;

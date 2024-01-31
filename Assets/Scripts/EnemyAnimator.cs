@@ -23,9 +23,9 @@ public class EnemyAnimator : MonoBehaviour
     [SerializeField] ParticleSystem arsPart;
    private void Start() 
    {
+        enemyHealth = GetComponentInChildren<EnemyHealth>();
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = animWalk;
-        enemyHealth = GetComponent<EnemyHealth>();
         if(go != null)
         {
             hpBarMaterial = go.GetComponent<Renderer>().material;
@@ -40,7 +40,7 @@ public class EnemyAnimator : MonoBehaviour
         {
             StopAllCoroutines();
             animator.runtimeAnimatorController = animDeath;
-            enemyHealth.GetComponent<NavMeshAgent>().speed = 0;
+            gameObject.GetComponent<NavMeshAgent>().speed = 0;
         } 
         if(fresnel > 0.1f && go != null)
         {

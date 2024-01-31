@@ -5,6 +5,7 @@ using UnityEngine;
 public class Trader : MonoBehaviour
 {
    public GameObject portal;
+   public GameObject canvas;
    public Animator animator;
    public RuntimeAnimatorController animIdle;
    public RuntimeAnimatorController animTrade;
@@ -18,6 +19,8 @@ public class Trader : MonoBehaviour
         portal.SetActive(true);
         animator.runtimeAnimatorController = animTrade;
         StartCoroutine(HidSelf());
+        canvas.SetActive(true);
+        Time.timeScale = 0f;
    }
 
    IEnumerator HidSelf()

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -792,6 +792,8 @@ MonoBehaviour:
   - {fileID: 900582418}
   - {fileID: 695073880}
   - {fileID: 116890151}
+  _levelIndex: 0
+  isScroll: 0
 --- !u!1 &251295456
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,7 +912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultOrder: 2
-  _musicVolume: 60
+  _musicVolume: 20
   _effectsVolume: 80
   _voiceVolume: 0
 --- !u!1 &270979613
@@ -2309,7 +2311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3f6bd8a381517494c901b5b9718596bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5f4c2ad35fa36194d959423c50555d91, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
