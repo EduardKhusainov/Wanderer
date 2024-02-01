@@ -26,33 +26,39 @@ namespace Wandere {
         public void Update()
         {
             RaycastHits();
-            Destroy(gameObject, 5f);
+            //Destroy(gameObject, 5f);
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
             
         }
+
+        
 
         public void RaycastHits()
         {
             RaycastHit hit;
 
 
-            if (Physics.SphereCast(transform.position, 0.5f, Vector3.forward, out hit, 0.2f, 1<<Layer) && !isHit)
+            if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 0.1f, 1<<Layer) && !isHit)
             {
                 DoDamage(hit);
             }
-            if (Physics.SphereCast(transform.position, 0.5f, Vector3.left, out hit, 0.2f, 1<<Layer) && !isHit)
+            if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hit, 0.1f, 1<<Layer) && !isHit)
             {
                 DoDamage(hit);
             }
-            if (Physics.SphereCast(transform.position, 0.5f, Vector3.right, out hit, 0.2f, 1<<Layer) && !isHit)
+            if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, 0.1f, 1<<Layer) && !isHit)
             {
                DoDamage(hit);
             }
-            if(Physics.SphereCast(transform.position, 0.5f, Vector3.down, out hit, 0.2f, 1<<Layer) && !isHit)
+            if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 0.1f, 1<<Layer) && !isHit)
             {
                DoDamage(hit);
             }
-            if(Physics.SphereCast(transform.position, 0.5f, Vector3.forward, out hit, 0.05f, 1 <<0))
+            if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, 0.1f, 1<<Layer) && !isHit)
+            {
+               DoDamage(hit);
+            }
+            if(Physics.Raycast(transform.position, Vector3.forward, out hit, 0.1f, 1 << 0) && !isHit)
             {
                 Destroy(gameObject);
             }

@@ -23,14 +23,15 @@ public class BuffSystem : MonoBehaviour
         playerStats = FindObjectOfType<PlayerStats>();
         magnet = FindObjectOfType<Magnet>();
         resetBuffBool = FindObjectOfType<ResetBuffBool>();
-        canvas = FindObjectOfType<BuffScreenCanvas>().gameObject;
+        //if(FindObjectOfType<BuffScreenCanvas>().gameObject != null)
+        //canvas = FindObjectOfType<BuffScreenCanvas>().gameObject;
     }
 
     private void Update() 
     {
         if(canvas == null)
         {
-            //canvas = GameObject.Find("Buff_Screen_Canvas");
+            canvas = GameObject.Find("Buff_Screen_Canvas");
         }
         if(magnet.isArenaCleaned && !isOn && !resetBuffBool.isTrader)
         {

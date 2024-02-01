@@ -11,10 +11,12 @@ namespace Wanderer
         float _playerCurrentHealth;
         public float playerMaxHealth;
         [SerializeField] TextMeshProUGUI _playerHealthText;
-        //[SerializeField] Slider _hpSlider;
+        [SerializeField] TextMeshPro _textMinusPlayerHP;
         [SerializeField] Material hpBarMaterial;
         [SerializeField] GameObject go;
         [SerializeField] PlayerStats playerStats;
+        [SerializeField] Animator animator;
+        [SerializeField] RuntimeAnimatorController minusHP;
         private void Start()
         {
             playerMaxHealth = playerStats.playerMaxHealth;
@@ -29,6 +31,9 @@ namespace Wanderer
             if(_playerCurrentHealth > 0 && _playerCurrentHealth != 0)
             {
                 _playerCurrentHealth -= value;
+                animator.runtimeAnimatorController = minusHP;
+                //minusHP.Play();
+                _textMinusPlayerHP.text = value.ToString();
                 if(_playerCurrentHealth <= 0)
                 {
                     _playerCurrentHealth = 0;
