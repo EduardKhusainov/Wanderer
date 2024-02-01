@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using Wanderer.NSUI.Overlay;
 using Wanderer.NSUI.Screen;
 
@@ -17,6 +18,8 @@ namespace Wanderer
         [SerializeField] PlayerStats playerStats;
         [SerializeField] Animator animator;
         [SerializeField] RuntimeAnimatorController minusHP;
+        [SerializeField] RuntimeAnimatorController minusHP2;
+        bool isPlay;
         private void Start()
         {
             playerMaxHealth = playerStats.playerMaxHealth;
@@ -31,8 +34,16 @@ namespace Wanderer
             if(_playerCurrentHealth > 0 && _playerCurrentHealth != 0)
             {
                 _playerCurrentHealth -= value;
-                animator.runtimeAnimatorController = minusHP;
-                //minusHP.Play();
+                if(isPlay)
+                {
+                    animator.runtimeAnimatorController = minusHP;
+                    isPlay = false;
+                }
+                if(!isPlay)
+                {
+                    animator.runtimeAnimatorController = minusHP2;
+                    isPlay = true;
+                }
                 _textMinusPlayerHP.text = value.ToString();
                 if(_playerCurrentHealth <= 0)
                 {
