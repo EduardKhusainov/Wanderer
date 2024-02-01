@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 212167778725282126}
   - component: {fileID: 4516911794584773362}
   - component: {fileID: 8730706374063698794}
-  - component: {fileID: 7241605342211690303}
   - component: {fileID: 6817835754561567909}
+  - component: {fileID: 5110709586981883123}
   m_Layer: 0
   m_Name: WaterTwirl
   m_TagString: Untagged
@@ -85,27 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &7241605342211690303
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6756247969293759962}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 4.9999995
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6817835754561567909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,3 +98,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+--- !u!65 &5110709586981883123
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756247969293759962}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.61, y: -0.34, z: 7.14}
+  m_Center: {x: 0, y: 0, z: 0}

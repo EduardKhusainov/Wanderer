@@ -5165,10 +5165,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 998f39203eaf3b54a8f6f8b47f51207d,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2053895576660955309}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 998f39203eaf3b54a8f6f8b47f51207d,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7499075982875286308}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 998f39203eaf3b54a8f6f8b47f51207d,
         type: 3}
@@ -5179,12 +5175,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4956860862676259933}
   m_SourcePrefab: {fileID: 100100000, guid: 998f39203eaf3b54a8f6f8b47f51207d, type: 3}
---- !u!137 &938901282151313192 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7823170080362630203, guid: 998f39203eaf3b54a8f6f8b47f51207d,
-    type: 3}
-  m_PrefabInstance: {fileID: 2191320073317965037}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1344403855391187388 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 998f39203eaf3b54a8f6f8b47f51207d,
@@ -5236,28 +5226,6 @@ CapsuleCollider:
   m_Height: 1.86
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &2053895576660955309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344403855391187388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f2e1fe88ddadc4d8112477b7f4008e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyCurrentHealth: 0
-  _enemyMaxHealth: 120
-  _hpSlider: {fileID: 0}
-  coin: {fileID: 3965039573719096673, guid: b3e3199bca7fb264abc7f7147c60bae7, type: 3}
-  psEnemeDeath: {fileID: 4129174630785153158, guid: fd1e12a2889ec2a4aab355f405c64bcc,
-    type: 3}
-  skinnedMeshRenderer: {fileID: 938901282151313192}
-  hpBarMaterial: {fileID: 0}
-  go: {fileID: 3606925022819241416}
-  mainGo: {fileID: 0}
 --- !u!114 &7499075982875286308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5303,7 +5271,7 @@ MonoBehaviour:
   animDeath: {fileID: 9100000, guid: 27d62173d9ba89042bbe111a31e74e65, type: 2}
   enemyHealth: {fileID: 0}
   hpBarMaterial: {fileID: 0}
-  go: {fileID: 0}
+  go: {fileID: 3606925022819241416}
   fresnel: 0
   attackSpeed: 1.75
   damage: 25
