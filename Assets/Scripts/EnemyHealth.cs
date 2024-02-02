@@ -18,9 +18,14 @@ namespace Wanderer
         [SerializeField] Material hpBarMaterial;
         [SerializeField] GameObject go;
         [SerializeField] GameObject mainGo;
+        [SerializeField] Animator animator;
+        [SerializeField] RuntimeAnimatorController minusHP;
+        [SerializeField] RuntimeAnimatorController minusHP2;
+        [SerializeField] TextMeshPro _textMinusHP;
         bool isDeath;
         PlayerStats playerStats;
         PlayerHealth playerHealth;
+        bool isPlay;
 
         private void Start()
         {
@@ -34,12 +39,23 @@ namespace Wanderer
             if(_enemyCurrentHealth > 0 && _enemyCurrentHealth != 0)
             {
                 _enemyCurrentHealth -= value;
-            }
-            if(_enemyCurrentHealth <= 0 && !isDeath)
-            {
-                _enemyCurrentHealth = 0;
-                Death();
-                isDeath = true;
+                if(isPlay)
+                {
+                    animator.runtimeAnimatorController = minusHP;
+                    isPlay = false;
+                }
+                if(!isPlay)
+                {
+                    animator.runtimeAnimatorController = minusHP2;
+                    isPlay = true;
+                }
+                _textMinusHP.text = "-" + " " + value.ToString(); 
+                if(_enemyCurrentHealth <= 0 && !isDeath)
+                {
+                    _enemyCurrentHealth = 0;
+                    Death();
+                    isDeath = true;
+                }
             }
             
 
@@ -56,7 +72,7 @@ namespace Wanderer
             if(playerStats.isVamp)
             {
                 int chanceToHeal = Random.Range(0, 10);
-                if(chanceToHeal == 3)
+                if(chanceToHeal <= 3)
                 {
                     playerHealth.Heal(playerStats.vampHealAmmount);
                 }

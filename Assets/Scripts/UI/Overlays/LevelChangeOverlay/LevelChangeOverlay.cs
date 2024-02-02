@@ -32,12 +32,12 @@ namespace Wanderer
                 if (_levels[_levelIndex] == null)
                     return;
 
-                var animationTime = 0.5f;
+                var animationTime = 1f;
                 var delayTimeMillis = 1200;
 
                 await Task.Delay(delayTimeMillis);
 
-                var distanceToMove = 394f;
+                var distanceToMove = 282f;
 
                 _backgroundTransform.DOMoveY(_backgroundTransform.position.y + distanceToMove, animationTime)
                     .SetEase(Ease.Linear);
