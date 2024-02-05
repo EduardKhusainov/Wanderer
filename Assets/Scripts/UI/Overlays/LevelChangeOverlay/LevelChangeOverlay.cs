@@ -37,7 +37,7 @@ namespace Wanderer
 
                 await Task.Delay(delayTimeMillis);
 
-                var distanceToMove = 282f;
+                var distanceToMove = 395f;
 
                 _backgroundTransform.DOMoveY(_backgroundTransform.position.y + distanceToMove, animationTime)
                     .SetEase(Ease.Linear);
